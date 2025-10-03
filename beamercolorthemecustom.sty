@@ -1,0 +1,47 @@
+\RequirePackage{xcolor}
+
+\colorlet{oldwhite}{white}
+
+\definecolor{green}{HTML}{89B374}
+\definecolor{lightgreen}{HTML}{B5C266}
+\definecolor{white}{HTML}{E4E4E4}
+\definecolor{darkblue}{HTML}{387490}
+\definecolor{blue}{HTML}{01ACB6}
+\definecolor{black}{HTML}{2B2B2D}
+\definecolor{violet}{HTML}{837694}
+\definecolor{purple}{HTML}{6e2c5a}
+\definecolor{red}{HTML}{F2503B}
+\definecolor{yellow}{HTML}{FEBE28}
+\definecolor{darkgray}{HTML}{655a62}
+\definecolor{pink}{HTML}{f67598}
+\definecolor{orange}{HTML}{e9a02f}
+\definecolor{mint}{HTML}{3eb9a5}
+
+\setbeamercolor*{title}{fg=black}
+
+\setbeamercolor*{normal text}{fg=black}
+\setbeamercolor*{background canvas}{bg=oldwhite}
+\setbeamercolor*{frametitle}{bg=darkgray, fg=oldwhite}
+
+\setbeamercolor*{itemize item}{fg=darkblue}
+\setbeamercolor*{enumerate item}{fg=darkblue}
+\setbeamercolor*{description item}{fg=darkblue}
+
+\setbeamercolor*{footline}{fg=black}%, bg=oldwhite}
+% \setbeamercolor*{footline separator}{fg=green}
+
+\setbeamercolor*{block title}{fg=blue}
+\setbeamercolor*{block title alerted}{fg=red}
+\setbeamercolor*{block title example}{fg=green}
+\BeforeBeginEnvironment{lemma}{
+    \setbeamercolor*{block title}{fg=orange}
+}
+\BeforeBeginEnvironment{theorem}{
+    \setbeamercolor*{block title}{fg=pink}
+}
+\BeforeBeginEnvironment{definition}{
+    \setbeamercolor*{block title}{fg=blue}
+}
+\setbeamercolor*{proof title}{fg=mint
+}
+\setbeamercolor*{qed symbol}{fg=mint}

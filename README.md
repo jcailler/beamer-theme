@@ -1,0 +1,1 @@
+A simple yet colorful template for Beamer slides.

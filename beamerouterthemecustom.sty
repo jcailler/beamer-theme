@@ -1,0 +1,134 @@
+\RequirePackage{xstring}
+\RequirePackage{graphicx}
+\RequirePackage{transparent}
+
+%% Remove navigation symbols at the bottom of each slide
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% \setbeamertemplate{background}{%
+%     \transparent{0.05}%
+%     \includegraphics[trim={5cm 5cm 0 0}, clip, width=\paperwidth, height=\paperheight]{assets/background}
+% }
+
+\pgfdeclareverticalshading{rainbow}{100bp}{%
+    color(0bp)=(red); color(25bp)=(red); color(33bp)=(yellow);
+    color(41bp)=(green); color(49bp)=(blue); color(57bp)=(darkblue);
+    color(65bp)=(violet); color(75bp)=(purple); color(100bp)=(purple)
+}
+
+\setbeamertemplate{title page}{%
+    \newbox\internal@titlebox%
+    \newbox\internal@subtitlebox%
+    \newbox\internal@datebox%
+    %
+    \setbox\internal@titlebox\hbox to \linewidth{%
+        \usebeamerfont*{title}%
+        \usebeamercolor*[fg]{title}%
+        \vbox to 2.6em{\inserttitle}}%
+    \setbox\internal@subtitlebox\hbox to \linewidth{%
+        \usebeamerfont*{subtitle}%
+        \usebeamercolor*[fg]{subtitle}%
+        \vbox to 1.6em{\insertsubtitle}
+    }%
+    \setbox\internal@datebox\hbox to .4\linewidth{%
+        \usebeamerfont*{titlepage date}%
+        \usebeamercolor*[fg]{titlepage date}%
+        \vbox to 1em{\insertdate}
+    }
+    %
+    \box\internal@titlebox\par%
+    \box\internal@subtitlebox\par%
+    \tikz{%
+        \shade[shading=rainbow, shading angle=-90] (0, 0) rectangle (\linewidth, 2pt);
+    }\par%
+    \vskip2.1em%
+    \begin{minipage}{.6\linewidth}
+        \vbox to 1.5em{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\insertauthor}
+    \end{minipage}\hfill\begin{minipage}{.25\linewidth}
+        \vbox to 1.5em{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\begin{flushright}\insertinstitute\end{flushright}}
+    \end{minipage}\par%
+    \vskip2em%
+    \box\internal@datebox\par%
+
+    \vfill%
+
+    \begin{minipage}{\linewidth}
+        \null
+        \hfill%
+        \includegraphics[height=7mm]{assets/logo_ul}
+        \hfill%
+        \includegraphics[height=7mm]{assets/logo_cnrs}
+        \hfill%
+        \includegraphics[height=7mm]{assets/logo_inria}
+        \hfill%
+        \includegraphics[height=7mm]{assets/logo_loria}
+        \hfill%
+        \null
+    \end{minipage}
+}
+
+\def\progressbarht{3pt}
+\newlength{\progressbarwd}
+\setbeamertemplate{frametitle}{%
+    \nointerlineskip%
+    %
+    \newbox\internal@titlebox%
+    \newbox\internal@subtitlebox%
+    \newbox\internal@pagecountbox%
+    %
+    \setbox\internal@titlebox\vbox to 1.8em{\vfil\hbox{\hspace*{3mm}\usebeamerfont{frametitle}\insertframetitle}\vfil}%
+    \setbox\internal@subtitlebox\vbox to 1.8em{\vfil\hbox{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\hspace*{3mm}}\vfil}%
+    \setbox\internal@pagecountbox\vbox to \progressbarht{\hbox to \paperwidth{%
+            \IfInteger{\insertframenumber}{%
+                \ifnum\insertframenumber0>0%
+                    \setlength{\progressbarwd}{\dimexpr(\paperwidth*\insertframenumber/\inserttotalframenumber)}%
+                \else%
+                    \setlength{\progressbarwd}{\paperwidth}%
+                \fi%
+            }{%
+                \setlength{\progressbarwd}{\paperwidth}%
+            }%
+            \tikz{%
+                \clip (0, 0) rectangle (\progressbarwd, \progressbarht);
+                \shade[shading=rainbow, shading angle=-90] (0, 0) rectangle (\paperwidth, \progressbarht);
+            }%
+        }}%
+    %
+    \begin{beamercolorbox}[ht=1.8em,wd=\paperwidth]{frametitle}%
+        \box\internal@titlebox%
+        \hfill%
+        \box\internal@subtitlebox%
+    \end{beamercolorbox}%
+    \vspace*{-15pt}%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=\progressbarht]{}
+        \box\internal@pagecountbox%
+    \end{beamercolorbox}%
+}
+\setbeamertemplate{frametitle continuation}[from second][\insertcontinuationtext]
+
+\setbeamertemplate{footline}{%
+    \nointerlineskip%
+    %
+    {\tikz{%
+            \shade[shading=rainbow, shading angle=-90] (0, 0) rectangle (\paperwidth, 1pt);
+        }}%
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1.5ex]{footline}
+        \newbox\internal@authorbox%
+        \newbox\internal@titlebox%
+        \newbox\internal@pagebox%
+        %
+        \setbox\internal@authorbox\vbox to 1.5ex{\vfil\hbox to .2\paperwidth{\hfil\insertshortauthor\hfil}\vfil}%
+        \setbox\internal@titlebox\vbox to 1.5ex{\vfil\hbox{\insertshorttitle}\vfil}%
+        \setbox\internal@pagebox\vbox to 1.5ex{\vfil\hbox{\insertframenumber}\vfil}%
+        %
+        % \hspace*{1mm}%
+        \box\internal@authorbox%
+        \hfill%
+        \box\internal@titlebox%
+        \hfill%
+        \box\internal@pagebox%
+        \hspace*{1.5mm}%
+    \end{beamercolorbox}%
+}

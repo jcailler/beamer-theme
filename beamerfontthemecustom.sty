@@ -1,0 +1,78 @@
+\RequirePackage{iftex}
+
+\ifPDFTeX%
+
+\else%
+    \RequirePackage{fontspec}
+
+    \setmainfont[
+        Path = ./fonts/Yanone_Kaffeesatz/,
+        UprightFeatures={
+                LetterSpace=4.2,
+                Weight=400,
+            },
+        BoldFont            =   *,
+        BoldFeatures={
+                LetterSpace=4.2,
+                Weight=900,
+            },
+        ItalicFeatures={
+                LetterSpace=4.2,
+                Slant=-5
+            }
+    ]{YanoneKaffeesatz-VariableFont_wght.ttf}
+    \setsansfont[
+        Path           = ./fonts/Andika/,
+        Extension      = .ttf,
+        Ligatures      = TeX,
+        UprightFont    = *-Regular,
+        BoldFont       = *-Bold,
+        ItalicFont     = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]{Andika}
+    \setmonofont[
+        Path           = ./fonts/IosevkaCustom/,
+        Extension      = .ttf,
+        UprightFont    = *-Regular,
+        ItalicFont     = *-Italic,
+        BoldFont       = *-Bold,
+        BoldItalicFont = *-BoldItalic
+    ]{IosevkaCustom}
+\fi
+
+\setbeamerfont*{structure}{family=\rmfamily}%,series=\bfseries\boldmath}
+
+\setbeamerfont*{frametitle}{size=\Large,parent=structure}
+\setbeamerfont*{framesubtitle}{size=\large,parent=frametitle}
+
+\setbeamerfont*{footline}{size=\tiny, series=\bfseries, family=\sffamily}
+
+\setbeamerfont*{title}{size=\LARGE, family=\sffamily}
+\setbeamerfont*{subtitle}{size=\normalsize, family=\sffamily}
+\setbeamerfont*{author}{size=\large, family=\rmfamily}
+\setbeamerfont*{titlepage date}{size=\normalfont, family=\rmfamily}
+
+\setbeamerfont*{section in toc}{parent=structure}
+\setbeamerfont*{subsection in toc}{parent=structure}
+
+\setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
+\setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
+
+\setbeamerfont*{block title}{family=\rmfamily, size=\large}
+
+\setbeamerfont*{structure}{family=\rmfamily}
+
+\setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
+\setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
+
+\setbeamerfont*{qed symbol}{size=\footnotesize, series=\boldmath}
+
+\BeforeBeginEnvironment{lemma}{%
+    \let\theoremicon\faCheckCircle%
+}
+\BeforeBeginEnvironment{theorem}{%
+    \let\theoremicon\faCheckCircle%
+}
+\BeforeBeginEnvironment{definition}{%
+    \let\theoremicon\faEdit%
+}
