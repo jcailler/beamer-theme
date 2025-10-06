@@ -1,8 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{custom}
 
+\RequirePackage[abspath]{currfile}
+\RequirePackage{xstring}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{tikz}
+
+\begingroup
+    \getabspath{custom.cls}%
+    \xdef\custom@path{\theabsdir}%
+\endgroup
 
 \newif\ifwith@listings
 \with@listingsfalse
