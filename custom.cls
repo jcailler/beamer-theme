@@ -24,7 +24,7 @@
 % Imports the package `listings`, and include a
 % default style for the listings.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareStringOption{listings}[{}]
+\DeclareStringOption{listings}[]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Do not load the default fonts. Instead, you 
 % should specify your own using `\setmainfont`, 
@@ -50,17 +50,11 @@
 \mode<all>
 
 
-%% Setup listings
+%% Setup listings, if required
 
-\begingroup
-    \setsepchar{,}
-    \ignoreemptyitems
-    \greadlist*\listings@langs\custom@listings
-\endgroup
-
-\ifnum\listings@langslen>0%
+\IfStrEq{\custom@listings}{\@empty}{}{%
     \RequirePackage{listingscustom}
-\fi
+}
 
 % Insert our title frame at the very beginning of the document
 \AtBeginDocument{\begin{frame}[plain,noframenumbering]\maketitle\end{frame}}
@@ -70,17 +64,7 @@
     \section{Debugging frame}
     \begin{sframe}
         \begin{tabular}{r@{\ =\ }l}
-            listings & \showitems\listings@langs[]\par%
-            \foreachitem\entry\in\listings@langs{%
-                \setsepchar{:}%
-                \ignoreemptyitems%
-                \readlist*\lang{\entry}%
-                \qquad \lang[1]%
-                \ifnum\langlen>1%
-                    \ $\to$\ \lang[2]%
-                \fi%
-                \par%
-            } \\
+            listings & \custom@listings \\
             nofonts & \ifcustom@nofonts true \else false\fi \\ 
             debug & \ifcustom@debug true \else false\fi
         \end{tabular}

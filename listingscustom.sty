@@ -69,13 +69,14 @@
     \endmdleftrule%
 }
 
-\setsepchar{:}
-\ignoreemptyitems
-\foreachitem\entry\in\listings@langs{%
-    \readlist*\lang\entry
 
-    \ifnum\langlen>1%
-        \RequirePackage{\expanded{\lang[2]}}
-    \fi
-    \lstloadlanguages{\expanded{\lang[1]}}
+\newcommand\custom@lo@dlisting[1]{%
+    \StrCut{#1}{:}\lang\file
+    \IfStrEq{\file}{\@empty}{}{%
+        \RequirePackage{\file}
+    }
+    \lstloadlanguages{\lang}
+}
+\@for\entry:=\custom@listings\do{%
+    \custom@lo@dlisting{\entry}
 }
