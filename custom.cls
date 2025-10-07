@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{custom}
 
+\RequirePackage{kvoptions}
+\RequirePackage{listofitems}
 \RequirePackage[abspath]{currfile}
 \RequirePackage{xstring}
 \RequirePackage[dvipsnames]{xcolor}
@@ -11,25 +13,80 @@
     \xdef\custom@path{\theabsdir}%
 \endgroup
 
-\newif\ifwith@listings
-\with@listingsfalse
+%%% Options
 
-\DeclareOption{listings}{\with@listingstrue}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
-\ProcessOptions\relax
+\SetupKeyvalOptions{
+    family=custom,
+    prefix=custom@
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports the package `listings`, and include a
+% default style for the listings.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareStringOption{listings}[{}]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Do not load the default fonts. Instead, you 
+% should specify your own using `\setmainfont`, 
+% `\setsansfont` and `\setmonofont`.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareBoolOption[false]{nofonts}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Debugging option, please do not use.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareBoolOption[false]{debug}
+% Give other options to beamer, but remove some
+\DisableKeyvalOption[action=error, class=custom]{custom}{aspectratio}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{beamer}}
+\ProcessKeyvalOptions{custom}
+
+%% Load class
 
 \LoadClass[aspectratio=169, utf8, english]{beamer}
+
 
 \mode<presentation>
 \usetheme{custom}
 \mode<all>
 
-\ifwith@listings%
+
+%% Setup listings
+
+\begingroup
+    \setsepchar{,}
+    \ignoreemptyitems
+    \greadlist*\listings@langs\custom@listings
+\endgroup
+
+\ifnum\listings@langslen>0%
     \RequirePackage{listingscustom}
 \fi
 
 % Insert our title frame at the very beginning of the document
 \AtBeginDocument{\begin{frame}[plain,noframenumbering]\maketitle\end{frame}}
+% When debugging, insert a special frame right after
+\AtBeginDocument{%
+\ifcustom@debug
+    \section{Debugging frame}
+    \begin{sframe}
+        \begin{tabular}{r@{\ =\ }l}
+            listings & \showitems\listings@langs[]\par%
+            \foreachitem\entry\in\listings@langs{%
+                \setsepchar{:}%
+                \ignoreemptyitems%
+                \readlist*\lang{\entry}%
+                \qquad \lang[1]%
+                \ifnum\langlen>1%
+                    \ $\to$\ \lang[2]%
+                \fi%
+                \par%
+            } \\
+            nofonts & \ifcustom@nofonts true \else false\fi \\ 
+            debug & \ifcustom@debug true \else false\fi
+        \end{tabular}
+    \end{sframe}
+\fi
+}
 
 
 \let\beamer@oldauthor\author

@@ -1,4 +1,4 @@
-\documentclass[listings]{custom}
+\documentclass[listings={Lean:listings-lean, Go}]{custom}
 
 \title[Short title]{Some random long title, because I don't know what to say}
 \subtitle{In some great conference!!}
@@ -153,7 +153,7 @@
 
 \section{Code test}
 \begin{sframe}[fragile]
-    \begin{lstlisting}[language=lean]
+    \begin{lstlisting}[language=Lean]
 /-- Functional extensionality: two functions are equal if they are equal in all their arguments. -/
 theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x}
   [Inhabited α] (h : ∀ x, f₁ x = f₂ x) : 
@@ -165,6 +165,17 @@ theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x
     exact h
   · exists default
     apply h
+\end{lstlisting}
+\end{sframe}
+
+\section{Code test \#2}
+\begin{sframe}[fragile]
+    Some random Go code to show highlighting.
+
+    \begin{lstlisting}[language=Go]
+func test() int {
+    return 0
+}
 \end{lstlisting}
 \end{sframe}
 

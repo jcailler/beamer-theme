@@ -3,41 +3,44 @@
 \ifPDFTeX%
 
 \else%
-    \RequirePackage{fontspec}
+    \ifcustom@nofonts%
+    \else%
+        \RequirePackage{fontspec}
 
-    \setmainfont[
-        Path = {\custom@path fonts/Yanone_Kaffeesatz/},
-        UprightFeatures={
-                LetterSpace=4.2,
-                Weight=400,
-            },
-        BoldFont            =   *,
-        BoldFeatures={
-                LetterSpace=4.2,
-                Weight=900,
-            },
-        ItalicFeatures={
-                LetterSpace=4.2,
-                Slant=-5
-            }
-    ]{YanoneKaffeesatz-VariableFont_wght.ttf}
-    \setsansfont[
-        Path           = {\custom@path fonts/Andika/},
-        Extension      = .ttf,
-        Ligatures      = TeX,
-        UprightFont    = *-Regular,
-        BoldFont       = *-Bold,
-        ItalicFont     = *-Italic,
-        BoldItalicFont = *-BoldItalic
-    ]{Andika}
-    \setmonofont[
-        Path           = {\custom@path fonts/IosevkaCustom/},
-        Extension      = .ttf,
-        UprightFont    = *-Regular,
-        ItalicFont     = *-Italic,
-        BoldFont       = *-Bold,
-        BoldItalicFont = *-BoldItalic
-    ]{IosevkaCustom}
+        \setmainfont[
+            Path = {\custom@path fonts/Yanone_Kaffeesatz/},
+            UprightFeatures={
+                    LetterSpace=4.2,
+                    Weight=400,
+                },
+            BoldFont            =   *,
+            BoldFeatures={
+                    LetterSpace=4.2,
+                    Weight=900,
+                },
+            ItalicFeatures={
+                    LetterSpace=4.2,
+                    Slant=-5
+                }
+        ]{YanoneKaffeesatz-VariableFont_wght.ttf}
+        \setsansfont[
+            Path           = {\custom@path fonts/Andika/},
+            Extension      = .ttf,
+            Ligatures      = TeX,
+            UprightFont    = *-Regular,
+            BoldFont       = *-Bold,
+            ItalicFont     = *-Italic,
+            BoldItalicFont = *-BoldItalic
+        ]{Andika}
+        \setmonofont[
+            Path           = {\custom@path fonts/IosevkaCustom/},
+            Extension      = .ttf,
+            UprightFont    = *-Regular,
+            ItalicFont     = *-Italic,
+            BoldFont       = *-Bold,
+            BoldItalicFont = *-BoldItalic
+        ]{IosevkaCustom}
+    \fi
 \fi
 
 \setbeamerfont*{structure}{family=\rmfamily}%,series=\bfseries\boldmath}

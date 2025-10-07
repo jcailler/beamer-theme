@@ -1,5 +1,4 @@
 \RequirePackage{listings}
-\RequirePackage{listings-lean}
 
 
 \definecolor{listingsbg}{HTML}{fafaf7}
@@ -68,4 +67,15 @@
 }
 \AfterEndEnvironment{lstlisting}{%
     \endmdleftrule%
+}
+
+\setsepchar{:}
+\ignoreemptyitems
+\foreachitem\entry\in\listings@langs{%
+    \readlist*\lang\entry
+
+    \ifnum\langlen>1%
+        \RequirePackage{\expanded{\lang[2]}}
+    \fi
+    \lstloadlanguages{\expanded{\lang[1]}}
 }
