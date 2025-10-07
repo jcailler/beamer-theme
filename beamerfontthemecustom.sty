@@ -3,7 +3,9 @@
 \ifcustom@nofonts%
 \else%
     \ifPDFTeX%
-
+        \PackageError{custom}%
+            {PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
+            {You can use the `nofonts' option to disable automatic loading of fonts and do it yourself.}
     \else%
         \RequirePackage{fontspec}
 
