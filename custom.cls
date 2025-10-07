@@ -59,8 +59,8 @@
 % Insert our title frame at the very beginning of the document
 \AtBeginDocument{\begin{frame}[plain,noframenumbering]\maketitle\end{frame}}
 % When debugging, insert a special frame right after
-\AtBeginDocument{%
 \ifcustom@debug
+\AtBeginDocument{%
     \section{Debugging frame}
     \begin{sframe}
         \begin{tabular}{r@{\ =\ }l}
@@ -69,8 +69,8 @@
             debug & \ifcustom@debug true \else false\fi
         \end{tabular}
     \end{sframe}
-\fi
 }
+\fi
 
 
 \let\beamer@oldauthor\author

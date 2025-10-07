@@ -1,9 +1,9 @@
 \RequirePackage{iftex}
 
-\ifPDFTeX%
-
+\ifcustom@nofonts%
 \else%
-    \ifcustom@nofonts%
+    \ifPDFTeX%
+
     \else%
         \RequirePackage{fontspec}
 
