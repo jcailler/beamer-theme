@@ -25,11 +25,11 @@
 	\setbox\internal@titlebox\hbox to \linewidth{%
 		\usebeamerfont*{title}%
 		\usebeamercolor*[fg]{title}%
-		\vbox to 2.6em{\inserttitle}}%
+		\vbox to 2.6em{\vfil\inserttitle\vfil}}%
 	\setbox\internal@subtitlebox\hbox to \linewidth{%
 		\usebeamerfont*{subtitle}%
 		\usebeamercolor*[fg]{subtitle}%
-		\vbox to 1.6em{\insertsubtitle}
+		\vbox to 1.6em{\vfil\insertsubtitle\vfil}
 	}%
 	\setbox\internal@datebox\hbox to .4\linewidth{%
 		\usebeamerfont*{titlepage date}%
@@ -46,7 +46,7 @@
 	\begin{minipage}{.6\linewidth}
 		\vbox to 1.5em{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\insertauthor}
 	\end{minipage}\hfill\begin{minipage}{.25\linewidth}
-		\vbox to 1.5em{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\begin{flushright}\insertinstitute\end{flushright}}
+		\vbox to 1.5em{\vfil\usebeamerfont*{author}\usebeamercolor*[fg]{author}\begin{flushright}\insertinstitute\end{flushright}\vfil}
 	\end{minipage}\par%
 	\vskip2em%
 	\box\internal@datebox\par%
@@ -100,7 +100,7 @@
 		\hfill%
 		\box\internal@subtitlebox%
 	\end{beamercolorbox}%
-	\vspace*{-16pt}%
+	\vspace*{-16.1pt}%
 	\begin{beamercolorbox}[wd=\paperwidth,ht=\progressbarht]{}
 		\box\internal@pagecountbox%
 	\end{beamercolorbox}%

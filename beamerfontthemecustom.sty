@@ -77,7 +77,12 @@
 \setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
 \setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
 
-\setbeamerfont*{block title}{family=\rmfamily, size=\large}
+\setbeamerfont*{block title}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block title example}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block title alerted}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block body}{size=\small}
+\setbeamerfont*{block body example}{size=\small}
+\setbeamerfont*{block body alerted}{size=\small}
 
 \setbeamerfont*{structure}{family=\rmfamily}
 
@@ -93,5 +98,5 @@
 	\let\theoremicon\faCheckCircle%
 }
 \BeforeBeginEnvironment{definition}{%
-	\let\theoremicon\faEdit%
+	\let\theoremicon\faCrosshairs%
 }

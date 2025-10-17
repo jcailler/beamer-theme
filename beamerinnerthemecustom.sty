@@ -9,56 +9,53 @@
 %% Blocks
 % \setbeamertemplate{blocks}[rounded][shadow=false]
 \newmdenv[
-    topline=false,
-    bottomline=false,
-    rightline=false,
-    skipabove=\topsep,
-    skipbelow=\topsep,
-    leftmargin=-10pt,
-    innerleftmargin=7pt,
-    innertopmargin=2pt,
-    innerbottommargin=8pt,
-    linewidth=3pt,
-    backgroundcolor=oldwhite
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	leftmargin=-10pt,
+	innerleftmargin=5pt,
+	innertopmargin=-1pt,
+	innerbottommargin=5pt,
+	linewidth=3pt,
+	backgroundcolor=oldwhite
 ]{mdleftrule}
 
 \newenvironment<>{internal@block}[3]{%
-    \xdef\internal@block@argthree@end{#3 end}
-    {\usebeamercolor*[fg]{#1}}
-    \mdleftrule[linecolor={#1.fg}, backgroundcolor={#1.fg!8!white}]%
-    \actionenv#4%
-    \def\insertblocktitle{\raisebox{1pt}{\footnotesize\blockicon}\ #2}%
-    \par%
-    \usebeamertemplate{#3 begin}}
+	\xdef\internal@block@argthree@end{#3 end}
+	{\usebeamercolor*[fg]{#1}}
+	\mdleftrule[linecolor={#1.fg}, backgroundcolor={#1.fg!8!white}]%
+	\actionenv#4%
+	\def\insertblocktitle{\raisebox{1pt}{\scriptsize\blockicon}\ #2}%
+	\usebeamertemplate{#3 begin}}
 {%
-    \par\usebeamertemplate{\internal@block@argthree@end}\endactionenv\endmdleftrule}
+	\usebeamertemplate{\internal@block@argthree@end}\endactionenv\endmdleftrule}
 
 \renewenvironment<>{block}[1]{%
-    \@ifundefined{blockicon}{\def\blockicon{\faInfoCircle\kern0.3ex}}{}%
-    \internal@block{block title}{#1}{block}}{\endinternal@block\let\blockicon\undefined}
+	\@ifundefined{blockicon}{\def\blockicon{\faInfoCircle\kern0.3ex}}{}%
+	\internal@block{block title}{#1}{block}}{\endinternal@block\let\blockicon\undefined}
 \renewenvironment<>{exampleblock}[1]{%
-    \@ifundefined{blockicon}{\def\blockicon{\faComment*\kern0.3ex}}{}%
-    \internal@block{block title example}{#1}{block example}}{\endinternal@block\let\blockicon\undefined}
+	\@ifundefined{blockicon}{\def\blockicon{\faCommentDots\kern0.3ex}}{}%
+	\internal@block{block title example}{#1}{block example}}{\endinternal@block\let\blockicon\undefined}
 \renewenvironment<>{alertblock}[1]{%
-    \@ifundefined{blockicon}{\def\blockicon{\faExclamationTriangle\kern0.3ex}}{}%
-    \internal@block{block title alerted}{#1}{block alerted}}{\endinternal@block\let\blockicon\undefined}
+	\@ifundefined{blockicon}{\def\blockicon{\faExclamationTriangle\kern0.3ex}}{}%
+	\internal@block{block title alerted}{#1}{block alerted}}{\endinternal@block\let\blockicon\undefined}
 
 % TODO: change the icons for theorems/proofs
 \setbeamertemplate{theorem begin}{
-    \let\blockicon\theoremicon
-    \begin{\inserttheoremblockenv}{%
-        %\inserttheoremheadfont
-        \usebeamerfont*{block title}
-        \inserttheoremname
-        \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
-    }%
+	\let\blockicon\theoremicon
+	\begin{\inserttheoremblockenv}{%
+		%\inserttheoremheadfont
+		\usebeamerfont*{block title}
+		\inserttheoremname
+		\ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+	}%
 }
 \setbeamertemplate{proof begin}{%
-    \def\blockicon{\faCog\kern0.3ex}
-    {\usebeamercolor*[fg]{proof title}}
-    \setbeamercolor*{block title}{fg=proof title.fg}
-    \block{\insertproofname}
+	\def\blockicon{\faCog\kern0.3ex}
+	{\usebeamercolor*[fg]{proof title}}
+	\setbeamercolor*{block title}{fg=proof title.fg}
+	\block{\insertproofname}
 }
 \setbeamertemplate{proof end}{%
-    \endblock
+	\endblock
 }

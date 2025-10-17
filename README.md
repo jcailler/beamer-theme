@@ -17,8 +17,9 @@ The file `example.tex` contains a few frames to show how to use it.
   This option accepts a comma-separated list of entries of the form `language-name[=file-name]` where
   - `language-name` is the name of the language to be used in the `listing` environment.
   - `file-name` is an optional `.sty` file (without the extension!) that must be loaded to use the `language-name` in the `listing` environment.
-- `fonts/main`, `fonts/sans`, `fonts/mono` are font names (default to `{}`) to be used instead of the default ones.
-  You can set all these either one by one like 
+- `fonts/main`, `fonts/sans`, `fonts/mono` are font names (all default to `{}`) to be used instead of the default ones.
+  
+  You can set all these (in the class options) either one by one like 
   ```
   fonts/main=...,
   fonts/sans=...,
@@ -32,3 +33,6 @@ The file `example.tex` contains a few frames to show how to use it.
     mono=...
   }
   ```
+
+  Note that you do not necessarily have to set each. 
+  You may choose individual aspects to customize (e.g. only the monospace font).
