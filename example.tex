@@ -1,6 +1,11 @@
-\documentclass[listings={Lean:listings-lean,Go}]{custom}
+\documentclass[%
+    listings={
+        Lean=listings-lean,
+        Go
+    },
+]{custom}
 
-\title[Short title]{Some random long title, because I don't know what to say}
+\title[Short title]{Some random long title?}%, because I don't know what to say}
 \subtitle{In some great conference!!}
 \author[Short author name]{\speaker{Some random author}, some other author}
 \institute{Some institute!}
@@ -10,150 +15,149 @@
 
 \section{Color test}
 \begin{sframe}
-    \footnotesize
-    \sffamily
-    \begin{columns}
-        \begin{column}{.27\linewidth}
-            \begin{testcolors}[HTML]
-                \testcolor{green}
-                \testcolor{lightgreen}
-                \testcolor{oldwhite}
-                \testcolor{white}
-                \testcolor{pink}
-            \end{testcolors}
-        \end{column}
-        \begin{column}{.05\linewidth}
-            \centering
-            \rule{.1mm}{.7\textheight}
-        \end{column}
-        \begin{column}{.27\linewidth}
-            \begin{testcolors}[HTML]
-                \testcolor{darkblue}
-                \testcolor{blue}
-                \testcolor{black}
-                \testcolor{purple}
-            \end{testcolors}
-        \end{column}
-        \begin{column}{.05\linewidth}
-            \centering
-            \rule{.1mm}{.7\textheight}
-        \end{column}
-        \begin{column}{.27\linewidth}
-            \begin{testcolors}[HTML]
-                \testcolor{violet}
-                \testcolor{red}
-                \testcolor{yellow}
-                \testcolor{darkgray}
-                \testcolor{listingsbg}
-            \end{testcolors}
-        \end{column}
-    \end{columns}
+	\footnotesize
+	\sffamily
+	\begin{columns}
+		\begin{column}{.27\linewidth}
+			\begin{testcolors}[HTML]
+				\testcolor{green}
+				\testcolor{lightgreen}
+				\testcolor{oldwhite}
+				\testcolor{white}
+				\testcolor{pink}
+			\end{testcolors}
+		\end{column}
+		\begin{column}{.05\linewidth}
+			\centering
+			\rule{.1mm}{.7\textheight}
+		\end{column}
+		\begin{column}{.27\linewidth}
+			\begin{testcolors}[HTML]
+				\testcolor{darkblue}
+				\testcolor{blue}
+				\testcolor{black}
+				\testcolor{purple}
+			\end{testcolors}
+		\end{column}
+		\begin{column}{.05\linewidth}
+			\centering
+			\rule{.1mm}{.7\textheight}
+		\end{column}
+		\begin{column}{.27\linewidth}
+			\begin{testcolors}[HTML]
+				\testcolor{violet}
+				\testcolor{red}
+				\testcolor{yellow}
+				\testcolor{darkgray}
+			\end{testcolors}
+		\end{column}
+	\end{columns}
 \end{sframe}
 
 \section{Test frame 1}
 \begin{sframe}
-    Hello
+	Hello
 \end{sframe}
 
 \section{Test frame 2}
 \begin{sframe}
-    Oh look at the progress bar!
+	Oh look at the progress bar!
 \end{sframe}
 
 \section{Test frame 3}
 \begin{sframe}
-    It's nice, isn't it?
+	It's nice, isn't it?
 \end{sframe}
 
 \section{Test lists}
 \begin{sframe}
-    \begin{columns}
-        \begin{column}{.32\linewidth}
-            \begin{itemize}
-                \item Item 1
-                      \begin{itemize}
-                          \item Item 1.1
-                          \item Item 1.2
-                          \item Item 1.3
-                                \begin{itemize}
-                                    \item Item 1.3.1
-                                    \item Item 1.3.2
-                                \end{itemize}
-                      \end{itemize}
-                \item Item 2
-                \item Item 3
-                \item Item 4
-                \item Item 5
-            \end{itemize}
-        \end{column}
-        \begin{column}{.05\linewidth}
-            \centering
-            \rule{.1mm}{.7\textheight}
-        \end{column}
-        \begin{column}{.24\linewidth}
-            \begin{enumerate}
-                \item Item 1
-                \item Item 2
-                \item Item 3
-                \item Item 4
-                \item Item 5
-            \end{enumerate}
-        \end{column}
-        \begin{column}{.05\linewidth}
-            \centering
-            \rule{.1mm}{.7\textheight}
-        \end{column}
-        \begin{column}{.3\linewidth}
-            \begin{description}
-                \item[Name 1] Item 1
-                \item[Name 2] Item 2
-                \item[Name 3] Item 3
-                \item[Name 4] Item 4
-                \item[Name 5] Item 5
-            \end{description}
-        \end{column}
-    \end{columns}
+	\begin{columns}
+		\begin{column}{.32\linewidth}
+			\begin{itemize}
+				\item Item 1
+				      \begin{itemize}
+					      \item Item 1.1
+					      \item Item 1.2
+					      \item Item 1.3
+					            \begin{itemize}
+						            \item Item 1.3.1
+						            \item Item 1.3.2
+					            \end{itemize}
+				      \end{itemize}
+				\item Item 2
+				\item Item 3
+				\item Item 4
+				\item Item 5
+			\end{itemize}
+		\end{column}
+		\begin{column}{.05\linewidth}
+			\centering
+			\rule{.1mm}{.7\textheight}
+		\end{column}
+		\begin{column}{.24\linewidth}
+			\begin{enumerate}
+				\item Item 1
+				\item Item 2
+				\item Item 3
+				\item Item 4
+				\item Item 5
+			\end{enumerate}
+		\end{column}
+		\begin{column}{.05\linewidth}
+			\centering
+			\rule{.1mm}{.7\textheight}
+		\end{column}
+		\begin{column}{.3\linewidth}
+			\begin{description}
+				\item[Name 1] Item 1
+				\item[Name 2] Item 2
+				\item[Name 3] Item 3
+				\item[Name 4] Item 4
+				\item[Name 5] Item 5
+			\end{description}
+		\end{column}
+	\end{columns}
 \end{sframe}
 
 \section{Next slide is un-numbered}
 \begin{sframe*}
-    Hi!
+	Hi!
 \end{sframe*}
 
 \section{Test blocks}
 \begin{sframe}
-    \begin{columns}
-        \begin{column}{.45\linewidth}
-            \begin{block}{Some random basic block}
-                Some random test text
-            \end{block}
-            \begin{exampleblock}{Some example block}
-                Some random test text
-            \end{exampleblock}
-            \begin{alertblock}{Wait! Some alert block}
-                Some random test text
-            \end{alertblock}
-        \end{column}
-        \begin{column}{.45\linewidth}
-            \begin{definition}[Some definition]
-                Some random test text
-            \end{definition}
-            \begin{theorem}[Some theorem]
-                Some random test text
-            \end{theorem}
-            \begin{proof}
-                Some random test text
-            \end{proof}
-            \begin{lemma}[Some lemma]
-                Some random test text
-            \end{lemma}
-        \end{column}
-    \end{columns}
+	\begin{columns}
+		\begin{column}{.45\linewidth}
+			\begin{block}{Some random basic block}
+				Some random test text
+			\end{block}
+			\begin{exampleblock}{Some example block}
+				Some random test text
+			\end{exampleblock}
+			\begin{alertblock}{Wait! Some alert block}
+				Some random test text
+			\end{alertblock}
+		\end{column}
+		\begin{column}{.45\linewidth}
+			\begin{definition}[Some definition]
+				Some random test text
+			\end{definition}
+			\begin{theorem}[Some theorem]
+				Some random test text
+			\end{theorem}
+			\begin{proof}
+				Some random test text
+			\end{proof}
+			\begin{lemma}[Some lemma]
+				Some random test text
+			\end{lemma}
+		\end{column}
+	\end{columns}
 \end{sframe}
 
 \section{Code test}
 \begin{sframe}[fragile]
-    \begin{lstlisting}[language=Lean]
+	\begin{lstlisting}[language=Lean]
 /-- Functional extensionality: two functions are equal if they are equal in all their arguments. -/
 theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x}
   [Inhabited α] (h : ∀ x, f₁ x = f₂ x) : 
@@ -170,9 +174,9 @@ theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x
 
 \section{Code test \#2}
 \begin{sframe}[fragile]
-    Some random Go code to show highlighting.
+	Some random Go code to show highlighting.
 
-    \begin{lstlisting}[language=Go]
+	\begin{lstlisting}[language=Go]
 func test() int {
     return 0
 }

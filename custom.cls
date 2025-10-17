@@ -1,82 +1,100 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{custom}
 
-\RequirePackage{kvoptions}
-\RequirePackage{listofitems}
+\RequirePackage{pgfkeys, pgfopts}
 \RequirePackage[abspath]{currfile}
 \RequirePackage{xstring}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{tikz}
 
 \begingroup
-    \getabspath{custom.cls}%
-    \xdef\custom@path{\theabsdir}%
+\getabspath{custom.cls}%
+\xdef\custom@path{\theabsdir}%
 \endgroup
 
 %%% Options
 
-\SetupKeyvalOptions{
-    family=custom,
-    prefix=custom@
+\newif\ifcustom@debug
+\newif\ifcustom@nofonts
+\let\custom@fonts@main\@empty
+\let\custom@fonts@sans\@empty
+\let\custom@fonts@mono\@empty
+\let\custom@listings\@empty
+
+\pgfkeys{/custom/.is family}
+\pgfqkeys{/custom}{%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Imports the package `listings`, and include a
+	% default style for the listings.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	listings/.store in=\custom@listings,
+	listings/.initial={},
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Set these whenever you don't plan on using the 
+	% shipped fonts.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	fonts/main/.store in=\custom@fonts@main,
+	fonts/main/.initial={},
+	fonts/sans/.store in=\custom@fonts@sans,
+	fonts/sans/.initial={},
+	fonts/mono/.store in=\custom@fonts@mono,
+	fonts/mono/.initial={},
+	fonts/.is family,
+	fonts/.code={\pgfqkeys{/custom/fonts}{#1}},
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Debugging option, please do not use.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	debug/.is if=custom@debug,
+	debug/.initial=false,
+	%
+	% Give other options to beamer, but remove some
+	.unknown/.code={%
+			\PassOptionsToClass{\pgfkeyscurrentkey}{beamer}%
+		},
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Imports the package `listings`, and include a
-% default style for the listings.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareStringOption{listings}[]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Do not load the default fonts. Instead, you 
-% should specify your own using `\setmainfont`, 
-% `\setsansfont` and `\setmonofont`.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareBoolOption[false]{nofonts}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Debugging option, please do not use.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareBoolOption[false]{debug}
-% Give other options to beamer, but remove some
-\DisableKeyvalOption[action=error, class=custom]{custom}{aspectratio}
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{beamer}}
-\ProcessKeyvalOptions{custom}
+\ProcessPgfOptions{/custom}
 
 %% Load class
-
 \LoadClass[aspectratio=169, utf8, english]{beamer}
 
 
-\mode<presentation>
-\usetheme{custom}
-\mode<all>
+
+\mode<presentation>{\usetheme{custom}}
 
 
 %% Setup listings, if required
 
+\newif\ifcustom@has@listings
 \IfStrEq{\custom@listings}{\@empty}{}{%
-    \RequirePackage{listingscustom}
+	\custom@has@listingstrue
+	\RequirePackage{listingscustom}
 }
 
 % Insert our title frame at the very beginning of the document
 \AtBeginDocument{\begin{frame}[plain,noframenumbering]\maketitle\end{frame}}
 % When debugging, insert a special frame right after
 \ifcustom@debug
-\AtBeginDocument{%
-    \section{Debugging frame}
-    \begin{sframe}
-        \begin{tabular}{r@{\ =\ }l}
-            listings & \custom@listings \\
-            nofonts & \ifcustom@nofonts true \else false\fi \\ 
-            debug & \ifcustom@debug true \else false\fi
-        \end{tabular}
-    \end{sframe}
-}
+	\AtBeginDocument{%
+		\begin{frame}[noframenumbering]{{Debugging frame}}
+			\begin{tabular}{r@{\ =\ }l}
+				listings   & \custom@listings                    \\
+				fonts/main & \custom@fonts@main                  \\
+				fonts/sans & \custom@fonts@sans                  \\
+				fonts/mono & \custom@fonts@mono                  \\
+				debug      & \ifcustom@debug true \else false\fi
+			\end{tabular}
+		\end{frame}
+	}
 \fi
 
 
 \let\beamer@oldauthor\author
 \renewcommand\author[2][]{%
-    \let\speaker\underline%
-    \beamer@oldauthor[#1]{#2}%
+	\let\speaker\underline%
+	\beamer@oldauthor[#1]{#2}%
 }
 
 
@@ -85,16 +103,16 @@
 
 % TODO: why can't we just redefine the `frame` environment?
 \renewenvironment<>{sframe}[1][]{%
-    \begin{frame}#2[environment=sframe,#1]
-        \expandafter\ifx\relax\secname\relax\else%
-            \frametitle{\secname}%
-        \fi%
-        \expandafter\ifx\relax\subsecname\relax\else%
-            \framesubtitle{\subsecname}%
-        \fi%
-        }{\end{frame}}
+	\begin{frame}#2[environment=sframe,#1]
+		\expandafter\ifx\relax\secname\relax\else%
+			\frametitle{\secname}%
+		\fi%
+		\expandafter\ifx\relax\subsecname\relax\else%
+			\framesubtitle{\subsecname}%
+		\fi%
+		}{\end{frame}}
 
 \newenvironment<>{sframe*}[1][]{%
-    \begin{sframe}#2[#1]
-        }{\end{sframe}\addtocounter{framenumber}{-1}%
+	\begin{sframe}#2[#1]
+		}{\end{sframe}\addtocounter{framenumber}{-1}%
 }

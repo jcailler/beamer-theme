@@ -12,71 +12,71 @@
 \colorlet{commentcolor}{gray}
 
 \lstset{
-    % Spaces are not displayed as a special character
-    showstringspaces=false,
-    % keep spaces
-    keepspaces=true,
-    % Size of tabulations
-    tabsize=2,
-    % Enables ASCII chars 128 to 255
-    extendedchars=false,
-    % Case sensitivity
-    sensitive=true,
-    % Automatic breaking of long lines
-    breaklines=true,
-    breakatwhitespace=true,
-    % Default style fors listingsred
-    basicstyle=\ttfamily\footnotesize,
-    % Position of captions is bottom
-    captionpos=b,
-    % Full flexible columns
-    columns=[l]fullflexible,
-    % Style for (listings') identifiers
-    identifierstyle={\ttfamily\color{black}},
-    % Note : highlighting of Coq identifiers is done through a new
-    % delimiter definition through an lstset at the beginning of the
-    % document. Don't know how to do better.
-    % Style for declaration keywords
-    keywordstyle=[1]{\ttfamily\color{keywordcolor}},
-    % Style for sorts
-    keywordstyle=[2]{\ttfamily\color{sortcolor}},
-    % Style for tactics keywords
-    keywordstyle=[3]{\ttfamily\color{tacticcolor}},
-    % Style for attributes
-    keywordstyle=[4]{\ttfamily\color{attributecolor}},
-    % Style for strings
-    stringstyle=\ttfamily,
-    % Style for comments
-    commentstyle={\ttfamily\scriptsize\itshape\color{commentcolor}},
-    % --> We use `mdframed` for this instead <--
-    % backgroundcolor=\color{listingsbg},
-    % rulecolor=\color{listingsbg!70!black},
-    % frame=l,
-    % % frameround=tttt,
-    % % framextopmargin=10pt,
-    % % framexbottommargin=10pt,
-    % framerule=3pt,
-    % framesep=8pt,
+	% Spaces are not displayed as a special character
+	showstringspaces=false,
+	% keep spaces
+	keepspaces=true,
+	% Size of tabulations
+	tabsize=2,
+	% Enables ASCII chars 128 to 255
+	extendedchars=false,
+	% Case sensitivity
+	sensitive=true,
+	% Automatic breaking of long lines
+	breaklines=true,
+	breakatwhitespace=true,
+	% Default style fors listingsred
+	basicstyle=\ttfamily\footnotesize,
+	% Position of captions is bottom
+	captionpos=b,
+	% Full flexible columns
+	columns=[l]fullflexible,
+	% Style for (listings') identifiers
+	identifierstyle={\ttfamily\color{black}},
+	% Note : highlighting of Coq identifiers is done through a new
+	% delimiter definition through an lstset at the beginning of the
+	% document. Don't know how to do better.
+	% Style for declaration keywords
+	keywordstyle=[1]{\ttfamily\color{keywordcolor}},
+	% Style for sorts
+	keywordstyle=[2]{\ttfamily\color{sortcolor}},
+	% Style for tactics keywords
+	keywordstyle=[3]{\ttfamily\color{tacticcolor}},
+	% Style for attributes
+	keywordstyle=[4]{\ttfamily\color{attributecolor}},
+	% Style for strings
+	stringstyle=\ttfamily,
+	% Style for comments
+	commentstyle={\ttfamily\scriptsize\itshape\color{commentcolor}},
+	% --> We use `mdframed` for this instead <--
+	% backgroundcolor=\color{listingsbg},
+	% rulecolor=\color{listingsbg!70!black},
+	% frame=l,
+	% % frameround=tttt,
+	% % framextopmargin=10pt,
+	% % framexbottommargin=10pt,
+	% framerule=3pt,
+	% framesep=8pt,
 }
 
 \BeforeBeginEnvironment{lstlisting}{%
-    \mdleftrule[
-        linecolor={listingsbg!60!black},
-        backgroundcolor={listingsbg},
-        innerbottommargin=3pt]%
+	\mdleftrule[
+		linecolor={listingsbg!60!black},
+		backgroundcolor={listingsbg},
+		innerbottommargin=3pt]%
 }
 \AfterEndEnvironment{lstlisting}{%
-    \endmdleftrule%
+	\endmdleftrule%
 }
 
 
 \newcommand\custom@lo@dlisting[1]{%
-    \StrCut{#1}{:}\lang\file
-    \IfStrEq{\file}{\@empty}{}{%
-        \RequirePackage{\file}
-    }
-    \lstloadlanguages{\lang}
+	\StrCut{#1}{=}\lang\file
+	\IfStrEq{\file}{\@empty}{}{%
+		\RequirePackage{\file}
+	}
+	\lstloadlanguages{\lang}
 }
 \@for\entry:=\custom@listings\do{%
-    \custom@lo@dlisting{\entry}
+	\custom@lo@dlisting{\entry}
 }

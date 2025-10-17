@@ -1,48 +1,62 @@
 \RequirePackage{iftex}
 
-\ifcustom@nofonts%
+\ifPDFTeX%
+	\PackageError{custom}%
+	{PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
+	{}
 \else%
-    \ifPDFTeX%
-        \PackageError{custom}%
-            {PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
-            {You can use the `nofonts' option to disable automatic loading of fonts and do it yourself.}
-    \else%
-        \RequirePackage{fontspec}
+	\RequirePackage{fontspec}
 
-        \setmainfont[
-            Path = {\custom@path fonts/Yanone_Kaffeesatz/},
-            UprightFeatures={
-                    LetterSpace=4.2,
-                    Weight=400,
-                },
-            BoldFont            =   *,
-            BoldFeatures={
-                    LetterSpace=4.2,
-                    Weight=900,
-                },
-            ItalicFeatures={
-                    LetterSpace=4.2,
-                    Slant=-5
-                }
-        ]{YanoneKaffeesatz-VariableFont_wght.ttf}
-        \setsansfont[
-            Path           = {\custom@path fonts/Andika/},
-            Extension      = .ttf,
-            Ligatures      = TeX,
-            UprightFont    = *-Regular,
-            BoldFont       = *-Bold,
-            ItalicFont     = *-Italic,
-            BoldItalicFont = *-BoldItalic
-        ]{Andika}
-        \setmonofont[
-            Path           = {\custom@path fonts/IosevkaCustom/},
-            Extension      = .ttf,
-            UprightFont    = *-Regular,
-            ItalicFont     = *-Italic,
-            BoldFont       = *-Bold,
-            BoldItalicFont = *-BoldItalic
-        ]{IosevkaCustom}
-    \fi
+	\IfStrEq{\custom@fonts@main}{\@empty}{%
+		%% If no custom main font has been requested
+		\setmainfont[
+			Path = {\custom@path fonts/Yanone_Kaffeesatz/},
+			UprightFeatures={
+					LetterSpace=4.2,
+					Weight=400,
+				},
+			BoldFont            =   *,
+			BoldFeatures={
+					LetterSpace=4.2,
+					Weight=900,
+				},
+			ItalicFeatures={
+					LetterSpace=4.2,
+					Slant=-5
+				}
+		]{YanoneKaffeesatz-VariableFont_wght.ttf}
+	}{%
+		\setmainfont{\custom@fonts@main}
+	}
+
+	\IfStrEq{\custom@fonts@sans}{\@empty}{%
+		%% If no custom sans font has been requested
+		\setsansfont[
+			Path           = {\custom@path fonts/Andika/},
+			Extension      = .ttf,
+			Ligatures      = TeX,
+			UprightFont    = *-Regular,
+			BoldFont       = *-Bold,
+			ItalicFont     = *-Italic,
+			BoldItalicFont = *-BoldItalic
+		]{Andika}
+	}{%
+		\setsansfont{\custom@fonts@sans}
+	}
+
+	\IfStrEq{\custom@fonts@mono}{\@empty}{%
+		%% If no custom mono font has been requested
+		\setmonofont[
+			Path           = {\custom@path fonts/IosevkaCustom/},
+			Extension      = .ttf,
+			UprightFont    = *-Regular,
+			ItalicFont     = *-Italic,
+			BoldFont       = *-Bold,
+			BoldItalicFont = *-BoldItalic
+		]{IosevkaCustom}
+	}{%
+		\setmonofont{\custom@fonts@mono}
+	}
 \fi
 
 \setbeamerfont*{structure}{family=\rmfamily}%,series=\bfseries\boldmath}
@@ -73,11 +87,11 @@
 \setbeamerfont*{qed symbol}{size=\footnotesize, series=\boldmath}
 
 \BeforeBeginEnvironment{lemma}{%
-    \let\theoremicon\faCheckCircle%
+	\let\theoremicon\faCheckCircle%
 }
 \BeforeBeginEnvironment{theorem}{%
-    \let\theoremicon\faCheckCircle%
+	\let\theoremicon\faCheckCircle%
 }
 \BeforeBeginEnvironment{definition}{%
-    \let\theoremicon\faEdit%
+	\let\theoremicon\faEdit%
 }
