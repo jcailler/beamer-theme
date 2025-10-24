@@ -2,7 +2,8 @@
     listings={
         Lean=listings-lean,
         Go
-    }
+    },
+	withappendix=true,
 ]{custom}
 
 \title[Short title]{Some random long title, because I don't know what to say}
@@ -191,6 +192,15 @@ func test() int {
 		\skipbutton*{Skip}        &
 		\returnbutton*{Return \dots}
 	\end{tabular}
+\end{sframe}
+
+\appendix
+
+\section{First appendix frame}
+\begin{sframe}
+	\uncover<+->{Frames that are put in appendix are given a letter instead of a number.}
+
+	\uncover<+->{And the progress bar is fixed at full width!}
 \end{sframe}
 
 \end{document}

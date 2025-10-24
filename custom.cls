@@ -16,6 +16,7 @@
 
 \newif\ifcustom@debug
 \newif\ifcustom@nofonts
+\newif\ifcustom@withappendix
 \let\custom@fonts@main\@empty
 \let\custom@fonts@sans\@empty
 \let\custom@fonts@mono\@empty
@@ -48,6 +49,12 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	debug/.is if=custom@debug,
 	debug/.initial=false,
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Will you use `\appendix'?
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	withappendix/.is if=custom@withappendix,
+	withappendix/.initial=false,
 	%
 	% Give other options to beamer, but remove some
 	.unknown/.code={%
@@ -88,6 +95,20 @@
 			\end{tabular}
 		\end{frame}
 	}
+\fi
+
+
+\ifcustom@withappendix
+	\RequirePackage{appendixnumberbeamer}%
+
+	\let\custom@oldappendix\appendix%
+	\renewcommand\appendix{%
+		\custom@oldappendix%
+		\renewcommand{\insertframenumber}{\Alph{framenumber}}%
+		\renewcommand{\theframenumber}{\Alph{framenumber}}%
+	}%
+\else
+	\def\appendix{\ClassError{custom}{Appendices not supported without the `withappendix' option}{Please add the `withappendix' option to the class}}
 \fi
 
 
