@@ -114,7 +114,11 @@
 
 \let\beamer@oldauthor\author
 \renewcommand\author[2][]{%
-	\let\speaker\underline%
+	\@ifpackageloaded{ulem}{
+		\let\speaker\uline%
+	}{%
+		\let\speaker\underline%
+	}%
 	\beamer@oldauthor[#1]{#2}%
 }
 
@@ -130,6 +134,7 @@
 	\and%
 	\includegraphics[height=7mm]{\custom@path assets/logo_loria}
 }
+\date{\today}
 
 
 
