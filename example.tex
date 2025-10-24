@@ -3,7 +3,7 @@
         Lean=listings-lean,
         Go
     },
-	withappendix=true,
+	withappendix,
 ]{custom}
 
 \title[Short title]{Some random long title, because I don't know what to say}
@@ -196,6 +196,16 @@ func test() int {
 \end{sframe}
 
 \appendix
+\section*{Appendix}
+\begin{frame}[plain]
+	\vfill
+	\hfill
+	\begin{beamercolorbox}[sep=8pt,center,rounded=true,wd=0.5\pagewidth]{frametitle}
+		\usebeamerfont*{title}\insertsectionhead\par%
+	\end{beamercolorbox}
+	\hfill\null
+	\vfill
+\end{frame}
 
 \section{First appendix frame}
 \begin{sframe}
