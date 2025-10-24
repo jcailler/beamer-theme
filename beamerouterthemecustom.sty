@@ -18,6 +18,7 @@
 }
 
 \setbeamertemplate{title page}{%
+	\renewcommand\beamer@andtitle{, }%
 	\newbox\internal@titlebox%
 	\newbox\internal@subtitlebox%
 	\newbox\internal@datebox%
@@ -54,17 +55,13 @@
 	\vfill%
 
 	\begin{minipage}{\linewidth}
+		\begingroup
 		\null
 		\hfill%
-		\includegraphics[height=7mm]{\custom@path assets/logo_ul}
-		\hfill%
-		\includegraphics[height=7mm]{\custom@path assets/logo_cnrs}
-		\hfill%
-		\includegraphics[height=7mm]{\custom@path assets/logo_inria}
-		\hfill%
-		\includegraphics[height=7mm]{\custom@path assets/logo_loria}
+		\def\and{\hfill}\inserttitlegraphic%
 		\hfill%
 		\null
+		\endgroup
 	\end{minipage}
 }
 

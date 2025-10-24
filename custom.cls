@@ -119,6 +119,20 @@
 }
 
 
+%%% Some useful defaults
+\institute{Université de Lorraine, CNRS, Inria, LORIA}
+\titlegraphic{%
+	\includegraphics[height=7mm]{\custom@path assets/logo_ul}
+	\and%
+	\includegraphics[height=7mm]{\custom@path assets/logo_cnrs}
+	\and%
+	\includegraphics[height=7mm]{\custom@path assets/logo_inria}
+	\and%
+	\includegraphics[height=7mm]{\custom@path assets/logo_loria}
+}
+
+
+
 % \let\beamer@oldframe\frame
 % \let\endbeamer@oldframe\endframe
 
