@@ -101,6 +101,10 @@
 % \let\beamer@oldframe\frame
 % \let\endbeamer@oldframe\endframe
 
+\AtBeginSection{%
+	\renewcommand{\subsecname}{}%
+}
+
 % TODO: why can't we just redefine the `frame` environment?
 \renewenvironment<>{sframe}[1][]{%
 	\begin{frame}#2[environment=sframe,#1]

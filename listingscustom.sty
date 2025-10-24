@@ -1,4 +1,5 @@
 \RequirePackage{listings}
+\RequirePackage{relsize}
 
 
 \definecolor{listingsbg}{HTML}{fafaf7}
@@ -10,6 +11,7 @@
 \colorlet{tacticcolor}{blue}
 \colorlet{attributecolor}{mint}
 \colorlet{commentcolor}{gray}
+\colorlet{stringcolor}{green}
 
 \lstset{
 	% Spaces are not displayed as a special character
@@ -32,22 +34,22 @@
 	% Full flexible columns
 	columns=[l]fullflexible,
 	% Style for (listings') identifiers
-	identifierstyle={\ttfamily\color{black}},
+	identifierstyle=\color{black},
 	% Note : highlighting of Coq identifiers is done through a new
 	% delimiter definition through an lstset at the beginning of the
 	% document. Don't know how to do better.
 	% Style for declaration keywords
-	keywordstyle=[1]{\ttfamily\color{keywordcolor}},
+	keywordstyle=[1]{\color{keywordcolor}},
 	% Style for sorts
-	keywordstyle=[2]{\ttfamily\color{sortcolor}},
+	keywordstyle=[2]{\color{sortcolor}},
 	% Style for tactics keywords
-	keywordstyle=[3]{\ttfamily\color{tacticcolor}},
+	keywordstyle=[3]{\color{tacticcolor}},
 	% Style for attributes
-	keywordstyle=[4]{\ttfamily\color{attributecolor}},
+	keywordstyle=[4]{\color{attributecolor}},
 	% Style for strings
-	stringstyle=\ttfamily,
+	stringstyle={\color{stringcolor}},
 	% Style for comments
-	commentstyle={\ttfamily\scriptsize\itshape\color{commentcolor}},
+	commentstyle={\smaller\itshape\color{commentcolor}},
 	% --> We use `mdframed` for this instead <--
 	% backgroundcolor=\color{listingsbg},
 	% rulecolor=\color{listingsbg!70!black},
@@ -68,6 +70,16 @@
 \AfterEndEnvironment{lstlisting}{%
 	\endmdleftrule%
 }
+
+\let\oldlstinputlisting\lstinputlisting
+\newcommand\custom@newlstinputlisting[2][]{
+	\begin{mdleftrule}[linecolor={listingsbg!60!black},
+			backgroundcolor={listingsbg},
+			innerbottommargin=3pt]
+		\oldlstinputlisting[#1]{#2}
+	\end{mdleftrule}
+}
+\renewcommand*\lstinputlisting{\@ifstar\oldlstinputlisting\custom@newlstinputlisting}
 
 
 \newcommand\custom@lo@dlisting[1]{%
