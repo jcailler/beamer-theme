@@ -63,3 +63,16 @@
 \setbeamertemplate{proof end}{%
 	\endblock%
 }
+
+
+\setbeamertemplate{button}{%
+	\begingroup%
+	\usebeamercolor*[bg]{button border}\usebeamercolor*{button}%
+	\tikz\node[
+		inner xsep=4pt,
+		draw=button border.bg,
+		fill=button.bg,
+		text=button.fg,
+		rounded corners=4pt,
+		minimum height=1.8em]  {\usebeamerfont*{button}\insertbuttontext};%
+	\endgroup}

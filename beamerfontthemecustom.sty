@@ -1,4 +1,6 @@
 \RequirePackage{iftex}
+\RequirePackage{fontawesome5}
+\RequirePackage{relsize}
 
 \ifPDFTeX%
 	\PackageError{custom}%
@@ -100,3 +102,8 @@
 \BeforeBeginEnvironment{definition}{%
 	\let\theoremicon\faCrosshairs%
 }
+
+\setbeamerfont*{button}{size=\scriptsize, family=\rmfamily}
+\renewcommand\insertgotosymbol{{\smaller\faShare}\ \ }
+\renewcommand\insertskipsymbol{{\smaller\faAngleDoubleRight}\ \ }
+\renewcommand\insertreturnsymbol{{\smaller\faReply}\ \ }

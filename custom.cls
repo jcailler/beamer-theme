@@ -120,3 +120,14 @@
 	\begin{sframe}#2[#1]
 		}{\end{sframe}\addtocounter{framenumber}{-1}%
 }
+
+
+%%%% Various buttons
+
+\newcommand*\custom@gotobutton[2]{\hyperlink{#1}{\beamergotobutton{#2}}}
+\newcommand*\custom@returnbutton[2]{\hyperlink{#1}{\beamerreturnbutton{#2}}}
+\newcommand*\custom@skipbutton[2]{\hyperlink{#1}{\beamerskipbutton{#2}}}
+\newcommand*\button[1]{\beamerbutton{#1}}
+\newcommand*\gotobutton{\@ifstar\beamergotobutton\custom@gotobutton}
+\newcommand*\skipbutton{\@ifstar\beamerskipbutton\custom@skipbutton}
+\newcommand*\returnbutton{\@ifstar\beamerreturnbutton\custom@returnbutton}
