@@ -120,7 +120,7 @@
 
 
 %%% Some useful defaults
-\institute{Université de Lorraine, CNRS, Inria, LORIA}
+\institute{Université de Lorraine \and CNRS \and Inria \and LORIA}
 \titlegraphic{%
 	\includegraphics[height=7mm]{\custom@path assets/logo_ul}
 	\and%
