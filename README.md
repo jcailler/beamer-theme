@@ -36,3 +36,4 @@ The file `example.tex` contains a few frames to show how to use it.
 
   Note that you do not necessarily have to set each. 
   You may choose individual aspects to customize (e.g. only the monospace font).
+- `withappendix[=true|false]` (default = `false`) redefines the `\appendix` command to automatically number the appendix frames with letters instead of numbers, and removes them from the total frame count.
