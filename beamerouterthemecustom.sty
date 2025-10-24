@@ -18,7 +18,8 @@
 }
 
 \setbeamertemplate{title page}{%
-	\renewcommand\beamer@andtitle{, }%
+	\let\beamer@andtitle\beamer@andother%
+	\let\beamer@andinst\beamer@andother%
 	\newbox\internal@titlebox%
 	\newbox\internal@subtitlebox%
 	\newbox\internal@datebox%
