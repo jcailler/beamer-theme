@@ -24,39 +24,42 @@
 \newenvironment<>{internal@block}[3]{%
 	\xdef\internal@block@argthree@end{#3 end}
 	{\usebeamercolor*[fg]{#1}}
-	\mdleftrule[linecolor={#1.fg}, backgroundcolor={#1.fg!8!white}]%
 	\actionenv#4%
+	\mdleftrule[linecolor={#1.fg}, backgroundcolor={#1.fg!8!white}]%
 	\def\insertblocktitle{\raisebox{1pt}{\scriptsize\blockicon}\ #2}%
 	\usebeamertemplate{#3 begin}}
 {%
-	\usebeamertemplate{\internal@block@argthree@end}\endactionenv\endmdleftrule}
+	\usebeamertemplate{\internal@block@argthree@end}%
+	\endmdleftrule%
+	\endactionenv%
+}
 
 \renewenvironment<>{block}[1]{%
 	\@ifundefined{blockicon}{\def\blockicon{\faInfoCircle\kern0.3ex}}{}%
-	\internal@block{block title}{#1}{block}}{\endinternal@block\let\blockicon\undefined}
+	\internal@block#2{block title}{#1}{block}}{\endinternal@block\let\blockicon\undefined}
 \renewenvironment<>{exampleblock}[1]{%
 	\@ifundefined{blockicon}{\def\blockicon{\faCommentDots\kern0.3ex}}{}%
-	\internal@block{block title example}{#1}{block example}}{\endinternal@block\let\blockicon\undefined}
+	\internal@block#2{block title example}{#1}{block example}}{\endinternal@block\let\blockicon\undefined}
 \renewenvironment<>{alertblock}[1]{%
 	\@ifundefined{blockicon}{\def\blockicon{\faExclamationTriangle\kern0.3ex}}{}%
-	\internal@block{block title alerted}{#1}{block alerted}}{\endinternal@block\let\blockicon\undefined}
+	\internal@block#2{block title alerted}{#1}{block alerted}}{\endinternal@block\let\blockicon\undefined}
 
 % TODO: change the icons for theorems/proofs
 \setbeamertemplate{theorem begin}{
-	\let\blockicon\theoremicon
+	\let\blockicon\theoremicon%
 	\begin{\inserttheoremblockenv}{%
 		%\inserttheoremheadfont
-		\usebeamerfont*{block title}
-		\inserttheoremname
+		\usebeamerfont*{block title}%
+		\inserttheoremname%
 		\ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
 	}%
 }
 \setbeamertemplate{proof begin}{%
-	\def\blockicon{\faCog\kern0.3ex}
-	{\usebeamercolor*[fg]{proof title}}
-	\setbeamercolor*{block title}{fg=proof title.fg}
-	\block{\insertproofname}
+	\def\blockicon{\faCog\kern0.3ex}%
+	{\usebeamercolor*[fg]{proof title}}%
+	\setbeamercolor*{block title}{fg=proof title.fg}%
+	\block{\insertproofname}%
 }
 \setbeamertemplate{proof end}{%
-	\endblock
+	\endblock%
 }
