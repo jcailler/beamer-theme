@@ -65,7 +65,7 @@
 \ProcessPgfOptions{/custom}
 
 %% Load class
-\LoadClass[aspectratio=169, utf8, english]{beamer}
+\LoadClass[aspectratio=169, english]{beamer}
 
 
 
@@ -114,6 +114,11 @@
 
 \let\beamer@oldauthor\author
 \renewcommand\author[2][]{%
+	\@ifpackageloaded{hyperref}{
+		\pdfstringdefDisableCommands{%
+			\let\speaker\relax%
+		}
+	}{}
 	\@ifpackageloaded{ulem}{
 		\let\speaker\uline%
 	}{%
