@@ -63,7 +63,15 @@
 	}
 
 	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
-		\setmathfont{XITS Math}%
+		\setmathfont{latinmodern-math}[
+			Path = {\rainbow@path fonts/LatinModernMath/},
+			Extension = .otf,
+			UprightFont = *,
+			BoldFont = *,
+			ItalicFont = *,
+			BoldItalicFont = *,
+			Script = Math,
+		]%
 	}{%
 		\setmathfont{\rainbow@fonts@math}%
 	}
