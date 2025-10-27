@@ -43,7 +43,7 @@
 	fonts/mono/.store in=\rainbow@fonts@mono,
 	fonts/mono/.initial=\@empty,
 	fonts/math/.store in=\rainbow@fonts@math,
-	fonts/mono/.initial=\@empty,
+	fonts/math/.initial=\@empty,
 	fonts/.is family,
 	fonts/.code={\pgfqkeys{/rainbow/fonts}{#1}},
 	%
