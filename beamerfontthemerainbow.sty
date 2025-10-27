@@ -3,16 +3,16 @@
 \RequirePackage{relsize}
 
 \ifPDFTeX%
-	\PackageError{custom}%
+	\PackageError{rainbow}%
 	{PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
 	{}
 \else%
 	\RequirePackage{fontspec}
 
-	\IfStrEq{\custom@fonts@main}{\@empty}{%
+	\IfStrEq{\rainbow@fonts@main}{\@empty}{%
 		%% If no custom main font has been requested
 		\setmainfont[
-			Path = {\custom@path fonts/Yanone_Kaffeesatz/},
+			Path = {\rainbow@path fonts/Yanone_Kaffeesatz/},
 			UprightFeatures={
 					LetterSpace=4.2,
 					Weight=400,
@@ -28,13 +28,13 @@
 				}
 		]{YanoneKaffeesatz-VariableFont_wght.ttf}
 	}{%
-		\setmainfont{\custom@fonts@main}
+		\setmainfont{\rainbow@fonts@main}
 	}
 
-	\IfStrEq{\custom@fonts@sans}{\@empty}{%
+	\IfStrEq{\rainbow@fonts@sans}{\@empty}{%
 		%% If no custom sans font has been requested
 		\setsansfont[
-			Path           = {\custom@path fonts/Andika/},
+			Path           = {\rainbow@path fonts/Andika/},
 			Extension      = .ttf,
 			Ligatures      = TeX,
 			UprightFont    = *-Regular,
@@ -43,13 +43,13 @@
 			BoldItalicFont = *-BoldItalic
 		]{Andika}
 	}{%
-		\setsansfont{\custom@fonts@sans}
+		\setsansfont{\rainbow@fonts@sans}
 	}
 
-	\IfStrEq{\custom@fonts@mono}{\@empty}{%
+	\IfStrEq{\rainbow@fonts@mono}{\@empty}{%
 		%% If no custom mono font has been requested
 		\setmonofont[
-			Path           = {\custom@path fonts/IosevkaCustom/},
+			Path           = {\rainbow@path fonts/IosevkaCustom/},
 			Extension      = .ttf,
 			UprightFont    = *-Regular,
 			ItalicFont     = *-Italic,
@@ -57,7 +57,7 @@
 			BoldItalicFont = *-BoldItalic
 		]{IosevkaCustom}
 	}{%
-		\setmonofont{\custom@fonts@mono}
+		\setmonofont{\rainbow@fonts@mono}
 	}
 \fi
 

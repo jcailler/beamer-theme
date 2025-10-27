@@ -75,23 +75,23 @@
 }
 
 \let\oldlstinputlisting\lstinputlisting
-\newcommand\custom@newlstinputlisting[2][]{
+\newcommand\rainbow@newlstinputlisting[2][]{
 	\begin{mdleftrule}[linecolor={listingsbg!60!black},
 			backgroundcolor={listingsbg},
 			innerbottommargin=3pt]
 		\oldlstinputlisting[#1]{#2}
 	\end{mdleftrule}
 }
-\renewcommand*\lstinputlisting{\@ifstar\oldlstinputlisting\custom@newlstinputlisting}
+\renewcommand*\lstinputlisting{\@ifstar\oldlstinputlisting\rainbow@newlstinputlisting}
 
 
-\newcommand\custom@lo@dlisting[1]{%
+\newcommand\rainbow@lo@dlisting[1]{%
 	\StrCut{#1}{=}\lang\file
 	\IfStrEq{\file}{\@empty}{}{%
 		\RequirePackage{\file}
 	}
 	\lstloadlanguages{\lang}
 }
-\@for\entry:=\custom@listings\do{%
-	\custom@lo@dlisting{\entry}
+\@for\entry:=\rainbow@listings\do{%
+	\rainbow@lo@dlisting{\entry}
 }

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{custom}
+\ProvidesClass{rainbow-beamer}
 
 \RequirePackage{pgfkeys, pgfopts}
 \RequirePackage[abspath]{currfile}
@@ -8,52 +8,52 @@
 \RequirePackage{tikz}
 
 \begingroup
-\getabspath{custom.cls}%
-\xdef\custom@path{\theabsdir}%
+\getabspath{rainbow-beamer.cls}%
+\xdef\rainbow@path{\theabsdir}%
 \endgroup
 
 %%% Options
 
-\newif\ifcustom@debug
-\newif\ifcustom@nofonts
-\newif\ifcustom@withappendix
-\let\custom@fonts@main\@empty
-\let\custom@fonts@sans\@empty
-\let\custom@fonts@mono\@empty
-\let\custom@listings\@empty
+\newif\ifrainbow@debug
+\newif\ifrainbow@nofonts
+\newif\ifrainbow@withappendix
+\let\rainbow@fonts@main\@empty
+\let\rainbow@fonts@sans\@empty
+\let\rainbow@fonts@mono\@empty
+\let\rainbow@listings\@empty
 
-\pgfkeys{/custom/.is family}
-\pgfqkeys{/custom}{%
+\pgfkeys{/rainbow/.is family}
+\pgfqkeys{/rainbow}{%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Imports the package `listings`, and include a
 	% default style for the listings.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	listings/.store in=\custom@listings,
+	listings/.store in=\rainbow@listings,
 	listings/.initial={},
 	%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Set these whenever you don't plan on using the 
 	% shipped fonts.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	fonts/main/.store in=\custom@fonts@main,
+	fonts/main/.store in=\rainbow@fonts@main,
 	fonts/main/.initial={},
-	fonts/sans/.store in=\custom@fonts@sans,
+	fonts/sans/.store in=\rainbow@fonts@sans,
 	fonts/sans/.initial={},
-	fonts/mono/.store in=\custom@fonts@mono,
+	fonts/mono/.store in=\rainbow@fonts@mono,
 	fonts/mono/.initial={},
 	fonts/.is family,
-	fonts/.code={\pgfqkeys{/custom/fonts}{#1}},
+	fonts/.code={\pgfqkeys{/rainbow/fonts}{#1}},
 	%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Debugging option, please do not use.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	debug/.is if=custom@debug,
+	debug/.is if=rainbow@debug,
 	debug/.initial=false,
 	%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Will you use `\appendix'?
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	withappendix/.is if=custom@withappendix,
+	withappendix/.is if=rainbow@withappendix,
 	withappendix/.initial=false,
 	%
 	% Give other options to beamer, but remove some
@@ -62,53 +62,53 @@
 		},
 }
 
-\ProcessPgfOptions{/custom}
+\ProcessPgfOptions{/rainbow}
 
 %% Load class
 \LoadClass[aspectratio=169, english]{beamer}
 
 
 
-\mode<presentation>{\usetheme{custom}}
+\mode<presentation>{\usetheme{rainbow}}
 
 
 %% Setup listings, if required
 
-\newif\ifcustom@has@listings
-\IfStrEq{\custom@listings}{\@empty}{}{%
-	\custom@has@listingstrue
-	\RequirePackage{listingscustom}
+\newif\ifrainbow@has@listings
+\IfStrEq{\rainbow@listings}{\@empty}{}{%
+	\rainbow@has@listingstrue
+	\RequirePackage{listings-rainbow}
 }
 
 % Insert our title frame at the very beginning of the document
 \AtBeginDocument{\begin{frame}[plain,noframenumbering]\maketitle\end{frame}}
 % When debugging, insert a special frame right after
-\ifcustom@debug
+\ifrainbow@debug
 	\AtBeginDocument{%
 		\begin{frame}[noframenumbering]{{Debugging frame}}
 			\begin{tabular}{r@{\ =\ }l}
-				listings   & \custom@listings                    \\
-				fonts/main & \custom@fonts@main                  \\
-				fonts/sans & \custom@fonts@sans                  \\
-				fonts/mono & \custom@fonts@mono                  \\
-				debug      & \ifcustom@debug true \else false\fi
+				listings   & \rainbow@listings                    \\
+				fonts/main & \rainbow@fonts@main                  \\
+				fonts/sans & \rainbow@fonts@sans                  \\
+				fonts/mono & \rainbow@fonts@mono                  \\
+				debug      & \ifrainbow@debug true \else false\fi
 			\end{tabular}
 		\end{frame}
 	}
 \fi
 
 
-\ifcustom@withappendix
+\ifrainbow@withappendix
 	\RequirePackage{appendixnumberbeamer}%
 
-	\let\custom@oldappendix\appendix%
+	\let\rainbow@oldappendix\appendix%
 	\renewcommand\appendix{%
-		\custom@oldappendix%
+		\rainbow@oldappendix%
 		\renewcommand{\insertframenumber}{\Alph{framenumber}}%
 		\renewcommand{\theframenumber}{\Alph{framenumber}}%
 	}%
 \else
-	\def\appendix{\ClassError{custom}{Appendices not supported without the `withappendix' option}{Please add the `withappendix' option to the class}}
+	\def\appendix{\ClassError{rainbow}{Appendices not supported without the `withappendix' option}{Please add the `withappendix' option to the class}}
 \fi
 
 
@@ -131,13 +131,13 @@
 %%% Some useful defaults
 \institute{Université de Lorraine \and CNRS \and Inria \and LORIA}
 \titlegraphic{%
-	\includegraphics[height=7mm]{\custom@path assets/logo_ul}
+	\includegraphics[height=7mm]{\rainbow@path assets/logo_ul}
 	\and%
-	\includegraphics[height=7mm]{\custom@path assets/logo_cnrs}
+	\includegraphics[height=7mm]{\rainbow@path assets/logo_cnrs}
 	\and%
-	\includegraphics[height=7mm]{\custom@path assets/logo_inria}
+	\includegraphics[height=7mm]{\rainbow@path assets/logo_inria}
 	\and%
-	\includegraphics[height=7mm]{\custom@path assets/logo_loria}
+	\includegraphics[height=7mm]{\rainbow@path assets/logo_loria}
 }
 \date{\today}
 
@@ -169,10 +169,10 @@
 
 %%%% Various buttons
 
-\newcommand*\custom@gotobutton[2]{\hyperlink{#1}{\beamergotobutton{#2}}}
-\newcommand*\custom@returnbutton[2]{\hyperlink{#1}{\beamerreturnbutton{#2}}}
-\newcommand*\custom@skipbutton[2]{\hyperlink{#1}{\beamerskipbutton{#2}}}
+\newcommand*\rainbow@gotobutton[2]{\hyperlink{#1}{\beamergotobutton{#2}}}
+\newcommand*\rainbow@returnbutton[2]{\hyperlink{#1}{\beamerreturnbutton{#2}}}
+\newcommand*\rainbow@skipbutton[2]{\hyperlink{#1}{\beamerskipbutton{#2}}}
 \newcommand*\button[1]{\beamerbutton{#1}}
-\newcommand*\gotobutton{\@ifstar\beamergotobutton\custom@gotobutton}
-\newcommand*\skipbutton{\@ifstar\beamerskipbutton\custom@skipbutton}
-\newcommand*\returnbutton{\@ifstar\beamerreturnbutton\custom@returnbutton}
+\newcommand*\gotobutton{\@ifstar\beamergotobutton\rainbow@gotobutton}
+\newcommand*\skipbutton{\@ifstar\beamerskipbutton\rainbow@skipbutton}
+\newcommand*\returnbutton{\@ifstar\beamerreturnbutton\rainbow@returnbutton}

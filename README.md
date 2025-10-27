@@ -9,7 +9,7 @@ The file `example.tex` contains a few frames to show how to use it.
   
   I personally like to do that on a per-project basis using a `.envrc` file, but this is not required.
 - Add the `-recorder` option to the LaTeX engine that you use. 
-  This will ensure that the path to `custom.cls` is correctly found, therefore that the included fonts and assets will correctly be included in your presentation.
+  This will ensure that the path to `rainbow-beamer.cls` is correctly found, therefore that the included fonts and assets will correctly be included in your presentation.
 
 ## Options
 
