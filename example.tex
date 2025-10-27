@@ -4,11 +4,12 @@
         Go
     },
 	withappendix,
+	debug,
 ]{rainbow-beamer}
 
 \title[Short title]{Some random long title, because I don't know what to say}
 \subtitle{In some great conference!!}
-\author[\speaker{A} \and B]{\speaker{Speaker A}\and Author B}
+\author[\speaker{A} \and B]{\speaker{Speaker A} \and Author B}
 \date{\today}
 
 %%% These are optional
@@ -197,6 +198,13 @@ func test() int {
 		\skipbutton*{Skip}        &
 		\returnbutton*{Return \dots}
 	\end{tabular}
+\end{sframe}
+
+\section{Some math}
+\begin{sframe}
+	\begin{align*}
+		x^2 + \lBrack y\rBrack^2 & = z^2
+	\end{align*}
 \end{sframe}
 
 \appendix

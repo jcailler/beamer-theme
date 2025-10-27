@@ -20,6 +20,7 @@
 \let\rainbow@fonts@main\@empty
 \let\rainbow@fonts@sans\@empty
 \let\rainbow@fonts@mono\@empty
+\let\rainbow@fonts@math\@empty
 \let\rainbow@listings\@empty
 
 \pgfkeys{/rainbow/.is family}
@@ -36,11 +37,13 @@
 	% shipped fonts.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	fonts/main/.store in=\rainbow@fonts@main,
-	fonts/main/.initial={},
+	fonts/main/.initial=\@empty,
 	fonts/sans/.store in=\rainbow@fonts@sans,
-	fonts/sans/.initial={},
+	fonts/sans/.initial=\@empty,
 	fonts/mono/.store in=\rainbow@fonts@mono,
-	fonts/mono/.initial={},
+	fonts/mono/.initial=\@empty,
+	fonts/math/.store in=\rainbow@fonts@math,
+	fonts/mono/.initial=\@empty,
 	fonts/.is family,
 	fonts/.code={\pgfqkeys{/rainbow/fonts}{#1}},
 	%
@@ -91,6 +94,7 @@
 				fonts/main & \rainbow@fonts@main                  \\
 				fonts/sans & \rainbow@fonts@sans                  \\
 				fonts/mono & \rainbow@fonts@mono                  \\
+				fonts/math & \rainbow@fonts@math                  \\
 				debug      & \ifrainbow@debug true \else false\fi
 			\end{tabular}
 		\end{frame}

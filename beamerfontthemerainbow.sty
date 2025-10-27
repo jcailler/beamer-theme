@@ -7,6 +7,7 @@
 	{PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
 	{}
 \else%
+	\RequirePackage{unicode-math}
 	\RequirePackage{fontspec}
 
 	\IfStrEq{\rainbow@fonts@main}{\@empty}{%
@@ -22,6 +23,7 @@
 					LetterSpace=4.2,
 					Weight=900,
 				},
+			ItalicFont = *,
 			ItalicFeatures={
 					LetterSpace=4.2,
 					Slant=-5
@@ -58,6 +60,12 @@
 		]{IosevkaCustom}
 	}{%
 		\setmonofont{\rainbow@fonts@mono}
+	}
+
+	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
+		\setmathfont{XITS Math}%
+	}{%
+		\setmathfont{\rainbow@fonts@math}%
 	}
 \fi
 

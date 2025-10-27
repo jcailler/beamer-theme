@@ -20,20 +20,22 @@ This will generate and open the `.pdf` file generated.
   - `language-name` is the name of the language to be used in the `lstlisting` environment.
     When `language-name` contains square brackets (for example for language flavors), it may be needed to enclose it in curly brackets.
   - `file-name` is an optional `.sty` file (without the extension!) that must be loaded to use the `language-name` in the `lstlisting` environment.
-- `fonts/main`, `fonts/sans`, `fonts/mono` are font names (all default to `{}`) to be used instead of the default ones.
+- `fonts/main`, `fonts/sans`, `fonts/mono`, `fonts/math` are font names (all default to `{}`) to be used instead of the default ones.
   
   You can set all these (in the class options) either one by one like 
   ```
   fonts/main=...,
   fonts/sans=...,
-  fonts/mono=...
+  fonts/mono=...,
+  fonts/math=...
   ```
   or all at once like 
   ```
   fonts={
     main=...,
     sans=...,
-    mono=...
+    mono=...,
+    math=...
   }
   ```
 
