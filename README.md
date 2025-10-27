@@ -1,6 +1,8 @@
 ## A simple yet colorful template for Beamer slides.
 
 The file `example.tex` contains a few frames to show how to use it.
+To compile it, simply clone this repository and type `latexmk -pv example`.
+This will generate and open the `.pdf` file generated.
 
 ## How to use
 
