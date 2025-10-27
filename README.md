@@ -16,7 +16,8 @@ The file `example.tex` contains a few frames to show how to use it.
 - `listings` (default = `{}`): load the `listings` package, apply the default style, and preload some languages.
   This option accepts a comma-separated list of entries of the form `language-name[=file-name]` where
   - `language-name` is the name of the language to be used in the `lstlisting` environment.
-  - `file-name` is an optional `.sty` file (without the extension!) that must be loaded to use the `language-name` in the `listing` environment.
+    When `language-name` contains square brackets (for example for language flavors), it may be needed to enclose it in curly brackets.
+  - `file-name` is an optional `.sty` file (without the extension!) that must be loaded to use the `language-name` in the `lstlisting` environment.
 - `fonts/main`, `fonts/sans`, `fonts/mono` are font names (all default to `{}`) to be used instead of the default ones.
   
   You can set all these (in the class options) either one by one like 
