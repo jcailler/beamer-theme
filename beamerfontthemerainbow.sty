@@ -35,15 +35,9 @@
 
 	\IfStrEq{\rainbow@fonts@sans}{\@empty}{%
 		%% If no custom sans font has been requested
-		\setsansfont[
-			Path           = {\rainbow@path fonts/Andika/},
-			Extension      = .ttf,
-			Ligatures      = TeX,
-			UprightFont    = *-Regular,
-			BoldFont       = *-Bold,
-			ItalicFont     = *-Italic,
-			BoldItalicFont = *-BoldItalic
-		]{Andika}
+		\usepackage{andika}
+		% NOTE: Automatically changes the sans font
+		\setsansfont{Andika}
 	}{%
 		\setsansfont{\rainbow@fonts@sans}
 	}
@@ -63,7 +57,10 @@
 	}
 
 	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
+		%% If no custom math font has been requested
 		\RequirePackage{lete-sans-math}
+		% NOTE: automatically changes the math font
+		\setmathfont{Lete Sans Math}
 	}{%
 		\setmathfont{\rainbow@fonts@math}%
 	}
@@ -93,8 +90,6 @@
 \setbeamerfont*{block body}{size=\small}
 \setbeamerfont*{block body example}{size=\small}
 \setbeamerfont*{block body alerted}{size=\small}
-
-\setbeamerfont*{structure}{family=\rmfamily}
 
 \setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
 \setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
