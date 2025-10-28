@@ -3,6 +3,7 @@
 The file `example.tex` contains a few frames to show how to use it.
 To compile it, simply clone this repository and type `latexmk -pv example`.
 This will generate and open the `.pdf` file generated.
+A pre-compiled (by CI) `.pdf` file can also be found on [the release page](https://github.com/Mesabloo/beamer-theme/releases/tag/pdf).
 
 ## How to use
 
