@@ -34,13 +34,12 @@ jobs:
           token: ${{ github.token }}
         continue-on-error: true
         
-      - uses: dev-drprasad/delete-tag-and-release@v0.1.2
+      - uses: dev-drprasad/delete-tag-and-release@v1.1
         name: Delete release if already existing
         with:
           delete_release: true 
           tag_name: pdf
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         if: steps.fetch-release.outcome == 'success'
                     
       - name: Create release
