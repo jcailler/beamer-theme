@@ -7,6 +7,10 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{tikz}
 
+% Ensure luatex or xetex engine
+\RequirePackage{iftex}
+\RequireTUTeX%
+
 \begingroup
 \getabspath{rainbow-beamer.cls}%
 \xdef\rainbow@path{\theabsdir}%
