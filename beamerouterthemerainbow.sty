@@ -75,7 +75,7 @@
 	\newbox\internal@subtitlebox%
 	\newbox\internal@pagecountbox%
 	%
-	\setbox\internal@titlebox\vbox to 1.8em{\vfil\hbox{\hspace*{3mm}\usebeamerfont{frametitle}\insertframetitle}\vfil}%
+	\setbox\internal@titlebox\vbox to 1.8em{\vfil\hbox{\hspace*{3mm}\usebeamerfont{frametitle}\strut\insertframetitle}\vfil}%
 	\setbox\internal@subtitlebox\vbox to 1.8em{\vfil\hbox{\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\hspace*{3mm}}\vfil}%
 	\setbox\internal@pagecountbox\vbox to \progressbarht{\hbox to \paperwidth{%
 			\IfInteger{\insertframenumber}{%

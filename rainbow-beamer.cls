@@ -72,7 +72,10 @@
 \ProcessPgfOptions{/rainbow}
 
 %% Load class
-\LoadClass[aspectratio=169, english]{beamer}
+\LoadClass[
+	aspectratio=169,
+	noamssymb
+]{beamer}
 
 
 

@@ -7,7 +7,9 @@
 	{PDFTeX is unsupported (at least for now) since our template needs to load some fonts.}%
 	{}
 \else%
-	\RequirePackage{unicode-math}
+	\RequirePackage[
+		warnings-off={mathtools-colon,mathtools-overbracket}
+	]{unicode-math}
 	\RequirePackage{fontspec}
 
 	\IfStrEq{\rainbow@fonts@main}{\@empty}{%
