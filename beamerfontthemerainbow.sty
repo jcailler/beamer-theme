@@ -32,28 +32,16 @@
 				}
 		]{YanoneKaffeesatz-VariableFont_wght.ttf}
 	}{%
-		\setmainfont{\rainbow@fonts@main}
+		\expandafter\setmainfont\rainbow@fonts@main
 	}
 
 	\IfStrEq{\rainbow@fonts@sans}{\@empty}{%
 		%% If no custom sans font has been requested
-		\IfFileExists{andika.sty}{%
-			\usepackage{andika}
-			% NOTE: Automatically changes the sans font
-			\setsansfont{Andika}
-		}{%
-			\setsansfont[
-				Path           = {\rainbow@path fonts/Andika/},
-				Extension      = .ttf,
-				Ligatures      = TeX,
-				UprightFont    = *-Regular,
-				BoldFont       = *-Bold,
-				ItalicFont     = *-Italic,
-				BoldItalicFont = *-BoldItalic
-			]{Andika}
-		}
+		\usepackage{andika}
+		% NOTE: Automatically changes the sans font
+		\setsansfont{Andika}
 	}{%
-		\setsansfont{\rainbow@fonts@sans}
+		\expandafter\setsansfont\rainbow@fonts@sans
 	}
 
 	\IfStrEq{\rainbow@fonts@mono}{\@empty}{%
@@ -67,25 +55,16 @@
 			BoldItalicFont = *-BoldItalic
 		]{IosevkaCustom}
 	}{%
-		\setmonofont{\rainbow@fonts@mono}
+		\expandafter\setmonofont\rainbow@fonts@mono
 	}
 
 	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
 		%% If no custom math font has been requested
-		\IfFileExists{lete-sans-math.sty}{%
-			\RequirePackage{lete-sans-math}
-			% NOTE: automatically changes the math font
-			\setmathfont{Lete Sans Math}
-		}{%
-			\setmathfont[
-				Path = {\rainbow@path fonts/LeteSansMath/},
-				% Extension = .otf, 
-				UprightFont = *,
-				% BoldFont = *-Bold,
-			]{LeteSansMath.otf}
-		}
+		\RequirePackage{lete-sans-math}
+		% NOTE: automatically changes the math font
+		\setmathfont{Lete Sans Math}
 	}{%
-		\setmathfont{\rainbow@fonts@math}%
+		\expandafter\setmathfont\rainbow@fonts@math%
 	}
 \fi
 
@@ -94,12 +73,12 @@
 \setbeamerfont*{frametitle}{size=\Large,parent=structure}
 \setbeamerfont*{framesubtitle}{size=\large,parent=frametitle}
 
-\setbeamerfont*{footline}{size=\tiny, series=\bfseries, family=\sffamily}
+\setbeamerfont*{footline}{size=\tiny, family=\sffamily}
 
-\setbeamerfont*{title}{size=\LARGE, family=\sffamily}
+\setbeamerfont*{title}{size=\LARGE, family=\sffamily, series=\bfseries}
 \setbeamerfont*{subtitle}{size=\normalsize, family=\sffamily}
-\setbeamerfont*{author}{size=\large, family=\rmfamily}
-\setbeamerfont*{titlepage date}{size=\normalfont, family=\rmfamily}
+\setbeamerfont*{author}{size=\small, family=\rmfamily}
+\setbeamerfont*{titlepage date}{parent=author}
 
 \setbeamerfont*{section in toc}{parent=structure}
 \setbeamerfont*{subsection in toc}{parent=structure}
@@ -107,9 +86,9 @@
 \setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
 \setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
 
-\setbeamerfont*{block title}{family=\rmfamily, size=\normalsize}
-\setbeamerfont*{block title example}{family=\rmfamily, size=\normalsize}
-\setbeamerfont*{block title alerted}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block title}{family=\rmfamily, size=\small}
+\setbeamerfont*{block title example}{family=\rmfamily, size=\small}
+\setbeamerfont*{block title alerted}{family=\rmfamily, size=\small}
 \setbeamerfont*{block body}{size=\small}
 \setbeamerfont*{block body example}{size=\small}
 \setbeamerfont*{block body alerted}{size=\small}

@@ -4,8 +4,16 @@
         Go
     },
 	withappendix,
-	english
+	fonts={
+        main=Fira Sans,
+        sans=Fira Sans,
+        mono=Fira Mono,
+        math=Fira Math
+    }
 ]{rainbow-beamer}
+
+
+
 
 \title[Short title]{Some random long title, because I don't know what to say}
 \subtitle{In some great conference!!}
@@ -209,15 +217,14 @@ func test() int {
 \end{sframe}
 
 \appendix
-% Should this frame be included by default by \appendix?
-\section*{\appendixname}
+\section*{Appendix}
 \begin{frame}[plain,noframenumbering]
 	\vfill
 	\hfill
 	\begin{beamercolorbox}[sep=8pt,center,rounded=true,wd=0.5\pagewidth]{frametitle}
 		\usebeamerfont*{title}\insertsectionhead\par%
 	\end{beamercolorbox}
-	\hfill\null%
+	\hfill\null
 	\vfill
 \end{frame}
 
