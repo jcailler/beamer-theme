@@ -37,9 +37,21 @@
 
 	\IfStrEq{\rainbow@fonts@sans}{\@empty}{%
 		%% If no custom sans font has been requested
-		\usepackage{andika}
-		% NOTE: Automatically changes the sans font
-		\setsansfont{Andika}
+		\IfFileExists{andika.sty}{%
+			\usepackage{andika}
+			% NOTE: Automatically changes the sans font
+			\setsansfont{Andika}
+		}{%
+			\setsansfont[
+				Path           = {\rainbow@path fonts/Andika/},
+				Extension      = .ttf,
+				Ligatures      = TeX,
+				UprightFont    = *-Regular,
+				BoldFont       = *-Bold,
+				ItalicFont     = *-Italic,
+				BoldItalicFont = *-BoldItalic
+			]{Andika}
+		}
 	}{%
 		\setsansfont{\rainbow@fonts@sans}
 	}
@@ -60,9 +72,18 @@
 
 	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
 		%% If no custom math font has been requested
-		\RequirePackage{lete-sans-math}
-		% NOTE: automatically changes the math font
-		\setmathfont{Lete Sans Math}
+		\IfFileExists{lete-sans-math.sty}{%
+			\RequirePackage{lete-sans-math}
+			% NOTE: automatically changes the math font
+			\setmathfont{Lete Sans Math}
+		}{%
+			\setmathfont[
+				Path = {\rainbow@path fonts/LeteSansMath/},
+				% Extension = .otf, 
+				UprightFont = *,
+				% BoldFont = *-Bold,
+			]{LeteSansMath.otf}
+		}
 	}{%
 		\setmathfont{\rainbow@fonts@math}%
 	}
