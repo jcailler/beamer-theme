@@ -22,35 +22,40 @@
 	\let\beamer@andinst\beamer@andother%
 	\newbox\internal@titlebox%
 	\newbox\internal@subtitlebox%
+	\newbox\internal@authorinstbox%
 	\newbox\internal@datebox%
 	%
 	\setbox\internal@titlebox\hbox to \linewidth{%
 		\usebeamerfont*{title}%
 		\usebeamercolor*[fg]{title}%
-		\vbox to 2.6em{\vfil\inserttitle\vfil}}%
+		\vbox to 5.8ex{\vfil\inserttitle\vfil\null}}%
 	\setbox\internal@subtitlebox\hbox to \linewidth{%
 		\usebeamerfont*{subtitle}%
 		\usebeamercolor*[fg]{subtitle}%
-		\vbox to 1.6em{\vfil\insertsubtitle\vfil}
+		\vbox to 3.8ex{\vfil\insertsubtitle\vfil\null}%
 	}%
+	\setbox\internal@authorinstbox\hbox to \linewidth{\vbox to 8ex{%
+				\vfil%
+				\begin{minipage}{.6\linewidth}%
+					\vbox to 1.2ex{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\insertauthor}%
+				\end{minipage}\hfill\begin{minipage}{.25\linewidth}%
+					\vbox to 1.2ex{\vfil\usebeamerfont*{author}\usebeamercolor*[fg]{author}\begin{flushright}\insertinstitute\end{flushright}\vfil\null}%
+				\end{minipage}%
+				\vfil\null%
+			}}%
 	\setbox\internal@datebox\hbox to .4\linewidth{%
 		\usebeamerfont*{titlepage date}%
 		\usebeamercolor*[fg]{titlepage date}%
-		\vbox to 1em{\insertdate}
-	}
+		\vbox to 1ex{\insertdate}%
+	}%
 	%
 	\box\internal@titlebox\par%
 	\box\internal@subtitlebox\par%
 	\tikz{%
 		\shade[shading=rainbow, shading angle=-90] (0, 0) rectangle (\linewidth, 2pt);
 	}\par%
-	\vskip2.1em%
-	\begin{minipage}{.6\linewidth}
-		\vbox to 1.5em{\usebeamerfont*{author}\usebeamercolor*[fg]{author}\insertauthor}
-	\end{minipage}\hfill\begin{minipage}{.25\linewidth}
-		\vbox to 1.5em{\vfil\usebeamerfont*{author}\usebeamercolor*[fg]{author}\begin{flushright}\insertinstitute\end{flushright}\vfil}
-	\end{minipage}\par%
-	\vskip2em%
+	\box\internal@authorinstbox\par%
+	\vspace*{1ex}%
 	\box\internal@datebox\par%
 
 	\vfill%
