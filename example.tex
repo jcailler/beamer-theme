@@ -1,19 +1,12 @@
 \documentclass[%
+	debug,
+	sectionpage,
     listings={
         Lean=listings-lean,
         Go
     },
-	withappendix,
-	fonts={
-        main=Fira Sans,
-        sans=Fira Sans,
-        mono=Fira Mono,
-        math=Fira Math
-    }
+	withappendix
 ]{rainbow-beamer}
-
-
-
 
 \title[Short title]{Some random long title, because I don't know what to say}
 \subtitle{In some great conference!!}
@@ -27,8 +20,9 @@
 
 \begin{document}
 
-\section{Color test}
-\begin{sframe}
+\section{Section title}
+
+\begin{frame}{Color test}
 	\footnotesize
 	\sffamily
 	\begin{columns}
@@ -67,25 +61,21 @@
 			\end{testcolors}
 		\end{column}
 	\end{columns}
-\end{sframe}
+\end{frame}
 
-\section{Test frame 1}
-\begin{sframe}
+\begin{frame}{Test frame 1}
 	Hello
-\end{sframe}
+\end{frame}
 
-\section{Test frame 2}
-\begin{sframe}
+\begin{frame}{Test frame 2}
 	Oh look at the progress bar!
-\end{sframe}
+\end{frame}
 
-\section{Test frame 3}
-\begin{sframe}
+\begin{frame}{Test frame 3}
 	It's nice, isn't it?
-\end{sframe}
+\end{frame}
 
-\section{Test lists}
-\begin{sframe}
+\begin{frame}{Test lists}
 	\begin{columns}
 		\begin{column}{.32\linewidth}
 			\begin{itemize}
@@ -132,15 +122,9 @@
 			\end{description}
 		\end{column}
 	\end{columns}
-\end{sframe}
+\end{frame}
 
-\section{Next slide is un-numbered}
-\begin{sframe*}
-	Hi!
-\end{sframe*}
-
-\section{Test blocks}
-\begin{sframe}
+\begin{frame}{Test blocks}
 	\begin{columns}
 		\begin{column}{.45\linewidth}
 			\begin{block}<+->{Some random basic block}
@@ -168,10 +152,10 @@
 			\end{lemma}
 		\end{column}
 	\end{columns}
-\end{sframe}
+\end{frame}
 
-\section{Code test}
-\begin{sframe}[fragile]
+
+\begin{frame}[fragile]{Code test}
 	\begin{lstlisting}[language=Lean]
 /-- Functional extensionality: two functions are equal if they are equal in all their arguments. -/
 theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x}
@@ -185,10 +169,9 @@ theorem funext {α : Sort _} {β : α → Sort _} {f₁ f₂ : (x : α) → β x
   · exists default
     apply h
 \end{lstlisting}
-\end{sframe}
+\end{frame}
 
-\section{Code test \#2}
-\begin{sframe}[fragile]
+\begin{frame}[fragile]{Code test \#2}
 	Some random Go code to show highlighting.
 
 	\begin{lstlisting}[language=Go]
@@ -196,25 +179,23 @@ func test() int {
     return 0
 }
 \end{lstlisting}
-\end{sframe}
+\end{frame}
 
-\section{Buttons}
-\begin{sframe}
+\begin{frame}{Buttons}
 	\begin{tabular}{*{4}{p{2cm}}}
 		\button{Something}        &
 		\gotobutton*{Go to \dots} &
 		\skipbutton*{Skip}        &
 		\returnbutton*{Return \dots}
 	\end{tabular}
-\end{sframe}
+\end{frame}
 
-\section{Some math}
-\begin{sframe}
+\begin{frame}{Some math}
 	\begin{align*}
 		x^2 + \lBrack y\rBrack^2 & = z^2           \\
 		\mathcal{L}_1            & = \mathcal{C}_2
 	\end{align*}
-\end{sframe}
+\end{frame}
 
 \appendix
 \section*{Appendix}
@@ -228,11 +209,10 @@ func test() int {
 	\vfill
 \end{frame}
 
-\section{First appendix frame}
-\begin{sframe}
+\begin{frame}{First appendix frame}
 	\uncover<+->{Frames that are put in appendix are given a letter instead of a number.}
 
 	\uncover<+->{And the \textsf{progress bar} is fixed at full width!}
-\end{sframe}
+\end{frame}
 
 \end{document}

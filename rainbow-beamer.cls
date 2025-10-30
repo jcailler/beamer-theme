@@ -21,11 +21,13 @@
 \newif\ifrainbow@debug
 \newif\ifrainbow@nofonts
 \newif\ifrainbow@withappendix
+\newif\ifrainbow@sectionpage
 \let\rainbow@fonts@main\@empty
 \let\rainbow@fonts@sans\@empty
 \let\rainbow@fonts@mono\@empty
 \let\rainbow@fonts@math\@empty
 \let\rainbow@listings\@empty
+
 
 \pgfkeys{/rainbow/.is family}
 \pgfqkeys{/rainbow}{%
@@ -58,6 +60,12 @@
 	debug/.initial=false,
 	%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Sectionpage option
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	sectionpage/.is if=rainbow@sectionpage,
+	sectionpage/.initial=false,
+	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Will you use `\appendix'?
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	withappendix/.is if=rainbow@withappendix,
@@ -74,7 +82,8 @@
 %% Load class
 \LoadClass[
 	aspectratio=169,
-	noamssymb
+	noamssymb,
+	10pt
 ]{beamer}
 
 
@@ -97,12 +106,14 @@
 	\AtBeginDocument{%
 		\begin{frame}[noframenumbering]{{Debugging frame}}
 			\begin{tabular}{r@{\ =\ }l}
-				listings   & \rainbow@listings                    \\
-				fonts/main & \rainbow@fonts@main                  \\
-				fonts/sans & \rainbow@fonts@sans                  \\
-				fonts/mono & \rainbow@fonts@mono                  \\
-				fonts/math & \rainbow@fonts@math                  \\
-				debug      & \ifrainbow@debug true \else false\fi
+				listings    & \rainbow@listings                          \\
+				fonts/main  & \rainbow@fonts@main                        \\
+				fonts/sans  & \rainbow@fonts@sans                        \\
+				fonts/mono  & \rainbow@fonts@mono                        \\
+				fonts/math  & \rainbow@fonts@math                        \\
+				debug       & \ifrainbow@debug true \else false\fi       \\
+				sectionpage & \ifrainbow@sectionpage true \else false\fi \\
+				withapendix & \ifrainbow@withapendix true \else false\fi
 			\end{tabular}
 		\end{frame}
 	}
@@ -142,13 +153,13 @@
 %%% Some useful defaults
 \institute{Université de Lorraine \and CNRS \and Inria \and LORIA}
 \titlegraphic{%
-	\includegraphics[height=7mm]{\rainbow@path assets/logo_ul}
+	\includegraphics[height=8mm]{\rainbow@path assets/logo_ul}
 	\and%
-	\includegraphics[height=7mm]{\rainbow@path assets/logo_cnrs}
+	\includegraphics[height=8mm]{\rainbow@path assets/logo_cnrs}
 	\and%
-	\includegraphics[height=7mm]{\rainbow@path assets/logo_inria}
+	\includegraphics[height=8mm]{\rainbow@path assets/logo_inria}
 	\and%
-	\includegraphics[height=7mm]{\rainbow@path assets/logo_loria}
+	\includegraphics[height=8mm]{\rainbow@path assets/logo_loria}
 }
 \date{\today}
 
@@ -156,26 +167,6 @@
 
 % \let\beamer@oldframe\frame
 % \let\endbeamer@oldframe\endframe
-
-\AtBeginSection{%
-	\renewcommand{\subsecname}{}%
-}
-
-% TODO: why can't we just redefine the `frame` environment?
-\renewenvironment<>{sframe}[1][]{%
-	\begin{frame}#2[environment=sframe,#1]
-		\expandafter\ifx\relax\secname\relax\else%
-			\frametitle{\secname}%
-		\fi%
-		\expandafter\ifx\relax\subsecname\relax\else%
-			\framesubtitle{\subsecname}%
-		\fi%
-		}{\end{frame}}
-
-\newenvironment<>{sframe*}[1][]{%
-	\begin{sframe}#2[#1]
-		}{\end{sframe}\addtocounter{framenumber}{-1}%
-}
 
 
 %%%% Various buttons

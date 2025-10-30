@@ -14,63 +14,42 @@
 
 	\IfStrEq{\rainbow@fonts@main}{\@empty}{%
 		%% If no custom main font has been requested
-		\setmainfont[
-			Path = {\rainbow@path fonts/Yanone_Kaffeesatz/},
-			UprightFeatures={
-					LetterSpace=4.2,
-					Weight=400,
-				},
-			BoldFont            =   *,
-			BoldFeatures={
-					LetterSpace=4.2,
-					Weight=900,
-				},
-			ItalicFont = *,
-			ItalicFeatures={
-					LetterSpace=4.2,
-					Slant=-5
-				}
-		]{YanoneKaffeesatz-VariableFont_wght.ttf}
+		\setmainfont[ItalicFont={Fira Sans Light Italic},%
+			BoldFont={Fira Sans},%
+			BoldItalicFont={Fira Sans Italic}]%
+		{Fira Sans Light}%
 	}{%
 		\expandafter\setmainfont\rainbow@fonts@main
 	}
 
 	\IfStrEq{\rainbow@fonts@sans}{\@empty}{%
 		%% If no custom sans font has been requested
-		\usepackage{andika}
-		% NOTE: Automatically changes the sans font
-		\setsansfont{Andika}
+		\setsansfont[ItalicFont={Fira Sans Light Italic},%
+			BoldFont={Fira Sans},%
+			BoldItalicFont={Fira Sans Italic}]%
+		{Fira Sans Light}%
 	}{%
 		\expandafter\setsansfont\rainbow@fonts@sans
 	}
 
 	\IfStrEq{\rainbow@fonts@mono}{\@empty}{%
 		%% If no custom mono font has been requested
-		\setmonofont[
-			Path           = {\rainbow@path fonts/IosevkaCustom/},
-			Extension      = .ttf,
-			UprightFont    = *-Regular,
-			ItalicFont     = *-Italic,
-			BoldFont       = *-Bold,
-			BoldItalicFont = *-BoldItalic
-		]{IosevkaCustom}
+		\setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}%
 	}{%
 		\expandafter\setmonofont\rainbow@fonts@mono
 	}
 
 	\IfStrEq{\rainbow@fonts@math}{\@empty}{%
 		%% If no custom math font has been requested
-		\RequirePackage{lete-sans-math}
-		% NOTE: automatically changes the math font
-		\setmathfont{Lete Sans Math}
+		\setmathfont{Fira Math}
 	}{%
 		\expandafter\setmathfont\rainbow@fonts@math%
 	}
 \fi
 
-\setbeamerfont*{structure}{family=\rmfamily}%,series=\bfseries\boldmath}
+\setbeamerfont*{structure}{size=\small}%,series=\bfseries\boldmath}
 
-\setbeamerfont*{frametitle}{size=\Large,parent=structure}
+\setbeamerfont*{frametitle}{size=\large,parent=structure}
 \setbeamerfont*{framesubtitle}{size=\large,parent=frametitle}
 
 \setbeamerfont*{footline}{size=\tiny, family=\sffamily}
@@ -78,7 +57,7 @@
 \setbeamerfont*{title}{size=\LARGE, family=\sffamily, series=\bfseries}
 \setbeamerfont*{subtitle}{size=\normalsize, family=\sffamily}
 \setbeamerfont*{author}{size=\small, family=\rmfamily}
-\setbeamerfont*{titlepage date}{parent=author}
+\setbeamerfont*{titlepage date}{size=\small, parent=author}
 
 \setbeamerfont*{section in toc}{parent=structure}
 \setbeamerfont*{subsection in toc}{parent=structure}

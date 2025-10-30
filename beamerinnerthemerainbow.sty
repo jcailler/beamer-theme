@@ -64,7 +64,6 @@
 	\endblock%
 }
 
-
 \setbeamertemplate{button}{%
 	\begingroup%
 	\usebeamercolor*[bg]{button border}\usebeamercolor*{button}%
@@ -76,3 +75,26 @@
 		rounded corners=4pt,
 		minimum height=1.8em]  {\usebeamerfont*{button}\insertbuttontext};%
 	\endgroup}
+
+%% Section page
+% \ifrainbow@sectionpage
+% 	\AtBeginSection{
+% 		\begin{frame}[plain,noframenumbering]{}
+% 			\centering
+% 			\begin{minipage}{22em}
+% 				\raggedright
+% 				\usebeamerfont{section title}
+% 				\insertsection
+% 			\end{minipage}
+% 		\end{frame}
+% 	}
+% \else
+% 	\AtBeginSection{
+% 		% intentionally empty
+% 	}
+% \fi
+
+\AtBeginSection{
+	% intentionally empty
+}
+
