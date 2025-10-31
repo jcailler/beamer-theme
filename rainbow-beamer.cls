@@ -104,23 +104,23 @@
 % When debugging, insert a special frame right after
 \ifrainbow@debug
 	\AtBeginDocument{%
-		\begin{frame}[noframenumbering]{{Debugging frame}}
+		\begin{frame}[noframenumbering]{Debugging frame}
 			\begin{tabular}{r@{\ =\ }l}
-				listings    & \rainbow@listings                          \\
-				fonts/main  & \rainbow@fonts@main                        \\
-				fonts/sans  & \rainbow@fonts@sans                        \\
-				fonts/mono  & \rainbow@fonts@mono                        \\
-				fonts/math  & \rainbow@fonts@math                        \\
-				debug       & \ifrainbow@debug true \else false\fi       \\
-				sectionpage & \ifrainbow@sectionpage true \else false\fi \\
-				withapendix & \ifrainbow@withapendix true \else false\fi
+				listings     & \rainbow@listings                           \\
+				fonts/main   & \rainbow@fonts@main                         \\
+				fonts/sans   & \rainbow@fonts@sans                         \\
+				fonts/mono   & \rainbow@fonts@mono                         \\
+				fonts/math   & \rainbow@fonts@math                         \\
+				debug        & \ifrainbow@debug true \else false\fi        \\
+				sectionpage  & \ifrainbow@sectionpage true \else false\fi  \\
+				withappendix & \ifrainbow@withappendix true \else false\fi
 			\end{tabular}
 		\end{frame}
 	}
 \fi
 
 
-\ifrainbow@withappendix
+\ifrainbow@withappendix%
 	\RequirePackage{appendixnumberbeamer}%
 
 	\let\rainbow@oldappendix\appendix%
@@ -132,6 +132,22 @@
 \else
 	\def\appendix{\ClassError{rainbow}{Appendices not supported without the `withappendix' option}{Please add the `withappendix' option to the class}}
 \fi
+
+
+%% Section page
+\ifrainbow@sectionpage
+	\AtBeginSection{
+		\begin{frame}[plain,noframenumbering]{}
+			\centering
+			\begin{minipage}{22em}
+				\raggedright
+				\usebeamerfont{section title}
+				\insertsection
+			\end{minipage}
+		\end{frame}
+	}
+\fi
+
 
 
 \let\beamer@oldauthor\author
