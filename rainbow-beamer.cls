@@ -135,14 +135,29 @@
 
 
 %% Section page
+\newlength{\sectionprogressbarwd}
+
 \ifrainbow@sectionpage
 	\AtBeginSection{
 		\begin{frame}[plain,noframenumbering]{}
+			\IfInteger{\insertframenumber}{%
+				\ifnum\insertframenumber0>0%
+					\setlength{\sectionprogressbarwd}{\dimexpr(\linewidth*\insertframenumber/\inserttotalframenumber)}%
+				\else%
+					\setlength{\sectionprogressbarwd}{\dimexpr(\linewidth/\inserttotalframenumber)}%
+				\fi%
+			}{%
+				\setlength{\sectionprogressbarwd}{\linewidth}%
+			}
 			\centering
-			\begin{minipage}{22em}
+			\begin{minipage}{0.6\paperwidth}
 				\raggedright
 				\usebeamerfont{section title}
-				\insertsection
+				\insertsection\\[-1ex]%
+				\tikz{%
+					\clip (0, 0) rectangle (\sectionprogressbarwd, \progressbarht);
+					\shade[shading=rainbow, shading angle=-90] (0, 0) rectangle (\linewidth, \progressbarht);
+				}%
 			\end{minipage}
 		\end{frame}
 	}

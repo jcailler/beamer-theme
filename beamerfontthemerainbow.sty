@@ -10,7 +10,6 @@
 % 	\rainbow@fonthasoptionsfalse%
 % }
 \newcommand*\rainbow@checkfonthasoptions[1]{%
-\message{#1}%
 \IfBeginWith{#1}{[}{%
 \rainbow@fonthasoptionstrue%
 }{%
@@ -85,13 +84,14 @@
 \fi
 
 \setbeamerfont*{structure}{size=\small}%,series=\bfseries\boldmath}
+\setbeamerfont*{normal text}{size=\small}
 
-\setbeamerfont*{frametitle}{size=\large,parent=structure}
+\setbeamerfont*{frametitle}{size=\large, series=\bfseries, parent=structure}
 \setbeamerfont*{framesubtitle}{size=\large,parent=frametitle}
 
 \setbeamerfont*{footline}{size=\tiny, family=\sffamily}
 
-\setbeamerfont*{title}{size=\LARGE, family=\sffamily, series=\bfseries}
+\setbeamerfont*{title}{size=\Large, family=\sffamily, series=\bfseries}
 \setbeamerfont*{subtitle}{size=\normalsize, family=\sffamily}
 \setbeamerfont*{author}{size=\small, family=\rmfamily}
 \setbeamerfont*{titlepage date}{size=\small, parent=author}
@@ -102,9 +102,9 @@
 \setbeamerfont*{itemize item}{parent=structure, series=\bfseries\boldmath}
 \setbeamerfont*{enumerate item}{parent=structure, series=\bfseries\boldmath}
 
-\setbeamerfont*{block title}{family=\rmfamily, size=\small}
-\setbeamerfont*{block title example}{family=\rmfamily, size=\small}
-\setbeamerfont*{block title alerted}{family=\rmfamily, size=\small}
+\setbeamerfont*{block title}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block title example}{family=\rmfamily, size=\normalsize}
+\setbeamerfont*{block title alerted}{family=\rmfamily, size=\normalsize}
 \setbeamerfont*{block body}{size=\small}
 \setbeamerfont*{block body example}{size=\small}
 \setbeamerfont*{block body alerted}{size=\small}

@@ -1,0 +1,62 @@
+\RequirePackage{listings}
+% \RequirePackage{amssymb}
+
+% Listing style definition for the Lean Theorem Prover.
+% Defined by Jeremy Avigad, 2015, by modifying Assia Mahboubi's SSR style.
+% Unicode replacements taken from Olivier Verdier's unixode.sty
+
+\lstdefinelanguage{logo}{
+% Anything between $ becomes LaTeX math mode
+mathescape=true,
+% Comments may or not include Latex commands
+texcl=false,
+% keywords, list taken from lean-syntax.el
+morekeywords=[1]{set, face, end, repeat, if, ifelse, report, globals, own, one-of, set, let, ask, towards, one, of, other, create-turtles, with, in,radius, count, at, here, create, uphill, move, diffuse, and,atan,arctan,both,break,bf,bl,butfirst,butlast,%
+cbreak, close,co,continue,cos,count,clearscreen,cs,debquit,%
+describe,diff,difference,ed,edit,either,emptyp,equalp,er,erase,%
+errpause,errquit,fifp,filefprint,fifty,fileftype,fip,fileprint,%
+fird,fileread,fity,filetype,fiwd,fileword,f,first,or,fp,fprint,%
+fput,fty,ftype,full,fullscreen,go,bye,goodbye,gprop,greaterp,%
+help,if,iff,iffalse,ift,iftrue,nth,item,keyp,llast,lessp,list,%
+local,lput,make,max,maximum,memberp,memtrace,min,minimum,namep,%
+not,numberp,oflush,openr,openread,openw,openwrite,op,output,%
+pause,plist,pots,pow,pprop,pps,pr,print,product,quotient,random,%
+rc,readchar,rl,readlist,remprop,repcount,repeat,request,rnd,run,%
+se,sentence,sentencep,setc,setcolor,setipause,setqpause,po,show,%
+sin,split,splitscreen,sqrt,stop,sum,test,text,textscreen,thing,%
+to,tone,top,toplevel,type,untrace,wait,word,wordp,yaccdebug,is,%
+mod,remainder,trace,zerop,back,bk,bto,btouch,fd,forward,fto,%
+ftouch,getpen,heading,hit,hitoot,ht,hideturtle,loff,lampoff,lon,%
+lampon,lt,left,lot,lotoot,lto,ltouch,penc,pencolor,pd,pendown,pe,%
+penerase,penmode,pu,penup,px,penreverse,rt,right,rto,rtouch,%
+scrunch,seth,setheading,setscrun,setscrunch,setxy,shownp,st,%
+showturtle,towardsxy,clean,wipeclean,xcor,ycor,tur,turtle,%
+display,dpy},
+% Sorts
+morekeywords=[2]{patch,
+turtles,
+patches,
+any,
+nobody,
+breed},
+% modifiers, taken from lean-syntax.el
+% note: 'otherkeywords' is needed because these use a different symbol.
+% this command doesn't allow us to specify a number -- they are put with [1]
+% otherkeywords={
+% [persistent], [notation], [visible], [instance], [trans_instance],
+% [class], [parsing-only], [coercion], [unfold_full], [constructor],
+% [reducible], [irreducible], [semireducible], [quasireducible], [wf],
+% [whnf], [multiple_instances], [none], [decl], [declaration],
+% [relation], [symm], [subst], [refl], [trans], [simp], [congr], [unify],
+% [backward], [forward], [no_pattern], [begin_end], [tactic], [abbreviation],
+% [reducible], [unfold], [alias], [eqv], [intro], [intro!], [elim], [grinder],
+% [localrefinfo], [recursor]
+% },
+% Comments
+%comment=[s][\itshape \color{commentcolor}]{/-}{-/},
+morecomment=[l]{;},
+%
+extendedchars=true,
+escapeinside=||,
+sensitive=f
+}
